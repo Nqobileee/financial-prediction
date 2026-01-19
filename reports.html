@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>FinHealth Reports Gallery</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <style>
+    .neo-blur {
+      backdrop-filter: blur(12px);
+      background-color: rgba(255, 255, 255, 0.8);
+    }
+    .dark .neo-blur {
+      background-color: rgba(11, 13, 14, 0.8);
+    }
+    .glow-cyan {
+      box-shadow: 0 0 15px rgba(17, 164, 212, 0.3);
+    }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<!-- TopAppBar -->
+<nav class="fixed top-0 left-0 right-0 z-50 px-4 py-3">
+  <div class="neo-blur dark:neo-blur border border-slate-200 dark:border-slate-800 rounded-2xl flex items-center justify-between px-4 h-14 glow-cyan">
+    <div class="flex items-center gap-2">
+      <div class="bg-primary text-white p-1 rounded-lg">
+        <span class="material-symbols-outlined text-lg">terminal</span>
+      </div>
+      <h2 class="text-lg font-bold tracking-tight">FinHealth</h2>
+    </div>
+    <div class="flex items-center gap-4">
+      <button class="hidden md:block text-sm font-medium hover:text-primary transition-colors">Reports</button>
+      <button class="bg-primary text-white px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-wider">Take Survey</button>
+    </div>
+  </div>
+</nav>
+<main class="pt-24 pb-20 max-w-4xl mx-auto px-4">
+  <div class="mb-10 text-center">
+    <h1 class="text-3xl font-bold mb-2">Reports & Insights Gallery</h1>
+    <p class="text-slate-600 dark:text-slate-400 text-base max-w-2xl mx-auto">Visualize key financial and business trends from the FinHealth survey. These charts highlight patterns in SME growth, risk, insurance, and more.</p>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <!-- Example Gallery Images -->
+    <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl shadow p-4 flex flex-col items-center">
+      <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Growth Trend" class="rounded-lg mb-3 w-full h-48 object-cover"/>
+      <h3 class="font-bold text-lg mb-1">SME Growth Over Time</h3>
+      <p class="text-sm text-slate-500 text-center">Line graph showing average business turnover and growth rates by year.</p>
+    </div>
+    <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl shadow p-4 flex flex-col items-center">
+      <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80" alt="Risk Distribution" class="rounded-lg mb-3 w-full h-48 object-cover"/>
+      <h3 class="font-bold text-lg mb-1">Risk Category Distribution</h3>
+      <p class="text-sm text-slate-500 text-center">Pie chart of businesses classified as Low, Medium, or High risk.</p>
+    </div>
+    <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl shadow p-4 flex flex-col items-center">
+      <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=400&q=80" alt="Insurance Uptake" class="rounded-lg mb-3 w-full h-48 object-cover"/>
+      <h3 class="font-bold text-lg mb-1">Insurance Uptake</h3>
+      <p class="text-sm text-slate-500 text-center">Bar chart showing the percentage of SMEs with different types of insurance.</p>
+    </div>
+    <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl shadow p-4 flex flex-col items-center">
+      <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" alt="Cash Flow Issues" class="rounded-lg mb-3 w-full h-48 object-cover"/>
+      <h3 class="font-bold text-lg mb-1">Cash Flow Issues</h3>
+      <p class="text-sm text-slate-500 text-center">Stacked bar chart of reported cash flow problems by sector.</p>
+    </div>
+    <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl shadow p-4 flex flex-col items-center">
+      <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" alt="Digital Finance Adoption" class="rounded-lg mb-3 w-full h-48 object-cover"/>
+      <h3 class="font-bold text-lg mb-1">Digital Finance Adoption</h3>
+      <p class="text-sm text-slate-500 text-center">Column chart of mobile money and internet banking usage among SMEs.</p>
+    </div>
+    <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl shadow p-4 flex flex-col items-center">
+      <img src="https://images.unsplash.com/photo-1461344577544-4e5dc9487184?auto=format&fit=crop&w=400&q=80" alt="Tax Compliance" class="rounded-lg mb-3 w-full h-48 object-cover"/>
+      <h3 class="font-bold text-lg mb-1">Tax Compliance Rates</h3>
+      <p class="text-sm text-slate-500 text-center">Donut chart showing compliance with income tax requirements.</p>
+    </div>
+  </div>
+</main>
+</main>
+<!-- Footer (from homepage) -->
+<footer class="bg-slate-50 dark:bg-slate-900/50 border-t border-slate-200 dark:border-slate-800 py-12 px-6">
+<div class="flex flex-col items-center gap-8">
+<div class="flex items-center gap-2">
+<div class="bg-primary text-white p-1 rounded-lg">
+<span class="material-symbols-outlined text-lg">terminal</span>
+</div>
+<span class="font-bold">FinHealth</span>
+</div>
+<div class="flex gap-6">
+<a class="text-slate-400 hover:text-primary" href="#"><span class="material-symbols-outlined">code</span></a>
+<a class="text-slate-400 hover:text-primary" href="#"><span class="material-symbols-outlined">person</span></a>
+<a class="text-slate-400 hover:text-primary" href="#"><span class="material-symbols-outlined">link</span></a>
+<a class="text-slate-400 hover:text-primary" href="#"><span class="material-symbols-outlined">mail</span></a>
+</div>
+<p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">© 2024 FinHealth Africa. Data Driven.</p>
+</div>
+</footer>
+</body>
+</html>

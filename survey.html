@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#00bfff",
+                        "background-light": "#f7f7f7",
+                        "background-dark": "#18181b",
+                        "card-light": "#ffffff",
+                        "card-dark": "#27272a"
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .glow-border:focus-within {
+            box-shadow: 0 0 12px rgba(0, 191, 255, 0.3);
+            border-color: #00bfff !important;
+        }
+        .neon-accent {
+            text-shadow: 0 0 8px rgba(0, 191, 255, 0.5);
+        }
+        .glass-header {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#0c181d] dark:text-gray-100 min-h-screen flex flex-col">
+<!-- TopAppBar & ProgressBar Combined (original) -->
+<header class="sticky top-0 z-50 glass-header bg-background-light/80 dark:bg-background-dark/80 border-b border-gray-200 dark:border-gray-800">
+<div class="h-1 w-full bg-gray-200 dark:bg-gray-800">
+<div class="h-full bg-primary" style="width: 30%;"></div>
+</div>
+<div class="flex items-center justify-between px-4 py-3">
+<button class="flex items-center justify-center p-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+<span class="material-symbols-outlined text-2xl">close</span>
+</button>
+<div class="text-center">
+<h2 class="text-sm font-bold tracking-tight uppercase opacity-60">FinHealth Survey</h2>
+<p class="text-[10px] font-medium tracking-widest text-primary">STEP 03 OF 10</p>
+</div>
+<div class="w-8 flex justify-end">
+<span class="material-symbols-outlined text-primary neon-accent">analytics</span>
+</div>
+</div>
+</header>
+<main class="flex-1 px-4 py-6 max-w-2xl mx-auto w-full">
+<!-- Progress Indicator Text -->
+<div class="mb-6">
+<p class="text-xs font-semibold text-primary uppercase tracking-[0.2em] mb-1">Financial Health Survey</p>
+<h1 class="text-2xl font-bold leading-tight tracking-tight">Business Risk Assessment</h1>
+</div>
+
+<form id="surveyForm" class="space-y-6">
+
+<!-- Section 1: Demographics & Business Profile -->
+<div class="bg-card-light dark:bg-card-dark border border-gray-200 dark:border-gray-800 rounded-xl p-5 shadow-sm">
+<h2 class="text-xl font-bold mb-4 text-primary">Section 1: Demographics & Business Profile</h2>
+
+<!-- Q1: Country -->
+<div class="mb-6">
+<label class="text-sm font-bold mb-3 block">1. Country</label>
+<div class="space-y-2">
+<label class="flex items-center gap-3 p-3 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer">
+<input type="radio" name="country" value="eswatini" class="text-primary focus:ring-primary"/>
+<span>Eswatini</span>
+</label>
+<label class="flex items-center gap-3 p-3 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer">
+<input type="radio" name="country" value="lesotho" class="text-primary focus:ring-primary"/>
+<span>Lesotho</span>
+</label>
+<label class="flex items-center gap-3 p-3 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer">
+<input type="radio" name="country" value="malawi" class="text-primary focus:ring-primary"/>
+<span>Malawi</span>
+</label>
+<label class="flex items-center gap-3 p-3 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer">
+<input type="radio" name="country" value="zimbabwe" class="text-primary focus:ring-primary"/>
+<span>Zimbabwe</span>
+</label>
+</div>
+</div>
+
+<!-- Q2: Owner Age -->
+<div class="mb-6">
+<label class="text-sm font-bold mb-3 block">2. Owner Age</label>
+<input type="number" name="owner_age" placeholder="Enter age" class="w-full glow-border rounded-lg border border-gray-200 dark:border-gray-700 bg-background-light dark:bg-zinc-900 p-4 text-lg"/>
+</div>
+
+<!-- Q3: Owner Sex -->
+<div class="mb-6">
+<label class="text-sm font-bold mb-3 block">3. Owner Sex</label>
+<div class="grid grid-cols-2 gap-3">
+<label class="flex items-center justify-center gap-3 p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer">
+<input type="radio" name="owner_sex" value="Female" class="text-primary focus:ring-primary"/>
+<span>Female</span>
+</label>
+<label class="flex items-center justify-center gap-3 p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer">
+<input type="radio" name="owner_sex" value="Male" class="text-primary focus:ring-primary"/>
+<span>Male</span>
+</label>
+</div>
+</div>
+
+<!-- Q4: Business Age -->
+<div class="mb-6">
+<label class="text-sm font-bold mb-3 block">4. Business Age</label>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="text-xs uppercase tracking-wider opacity-60 mb-2 block">Years</label>
+<input type="number" name="business_age_years" placeholder="0" class="w-full glow-border rounded-lg border border-gray-200 dark:border-gray-700 bg-background-light dark:bg-zinc-900 p-3"/>
+</div>
+<div>
+<label class="text-xs uppercase tracking-wider opacity-60 mb-2 block">Months</label>
+<input type="number" name="business_age_months" placeholder="0" class="w-full glow-border rounded-lg border border-gray-200 dark:border-gray-700 bg-background-light dark:bg-zinc-900 p-3"/>
+</div>
+</div>
+</div>
+
+<!-- Q5: COVID Essential Service -->
+<div class="mb-6">
+<label class="text-sm font-bold mb-3 block">5. COVID Essential Service</label>
+<div class="space-y-2">
+<label class="flex items-center gap-3 p-3 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer">
+<input type="radio" name="covid_essential_service" value="Yes" class="text-primary focus:ring-primary"/>
+<span>Yes</span>
+</label>
+<label class="flex items-center gap-3 p-3 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer">
+<input type="radio" name="covid_essential_service" value="No" class="text-primary focus:ring-primary"/>
+<span>No</span>
+</label>
+<label class="flex items-center gap-3 p-3 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer">
+<input type="radio" name="covid_essential_service" value="Don't know" class="text-primary focus:ring-primary"/>
+<span>Don't know</span>
+</label>
+</div>
+</div>
+</div>
+
+<!-- Section 2: Financial Information -->
+<div class="bg-card-light dark:bg-card-dark border border-gray-200 dark:border-gray-800 rounded-xl p-5 shadow-sm">
+<h2 class="text-xl font-bold mb-4 text-primary">Section 2: Financial Information</h2>
+
+<!-- Q6: Personal Income -->
+<div class="mb-6">
+<label class="text-sm font-bold mb-3 block">6. Personal Income</label>
+<div class="relative flex items-center glow-border rounded-lg border border-gray-200 dark:border-gray-700 bg-background-light dark:bg-zinc-900">
+<input type="number" name="personal_income" placeholder="Enter amount" class="w-full bg-transparent border-none focus:ring-0 p-4 text-lg"/>
+<span class="material-symbols-outlined text-primary pr-4">payments</span>
+</div>
+</div>
+
+<!-- Q7: Business Expenses -->
+<div class="mb-6">
+<label class="text-sm font-bold mb-3 block">7. Business Expenses</label>
+<div class="relative flex items-center glow-border rounded-lg border border-gray-200 dark:border-gray-700 bg-background-light dark:bg-zinc-900">
+<input type="number" name="business_expenses" placeholder="Enter amount" class="w-full bg-transparent border-none focus:ring-0 p-4 text-lg"/>
+<span class="material-symbols-outlined text-primary pr-4">receipt_long</span>
+</div>
+</div>
+
+<!-- Q8: Business Turnover -->
+<div class="mb-6">
+<label class="text-sm font-bold mb-3 block">8. Business Turnover</label>
+<div class="relative flex items-center glow-border rounded-lg border border-gray-200 dark:border-gray-700 bg-background-light dark:bg-zinc-900">
+<input type="number" name="business_turnover" placeholder="Enter amount" class="w-full bg-transparent border-none focus:ring-0 p-4 text-lg"/>
+<span class="material-symbols-outlined text-primary pr-4">trending_up</span>
+</div>
+</div>
+
+<!-- Q9: Keeps Financial Records -->
+<div class="mb-6">
+<label class="text-sm font-bold mb-3 block">9. Keeps Financial Records</label>
+<div class="space-y-2">
+<label class="flex items-center gap-3 p-3 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer">
+<input type="radio" name="keeps_financial_records" value="Yes, always" class="text-primary focus:ring-primary"/>
+<span>Yes, always</span>
+</label>
+<label class="flex items-center gap-3 p-3 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer">
+<input type="radio" name="keeps_financial_records" value="Yes, sometimes" class="text-primary focus:ring-primary"/>
+<span>Yes, sometimes</span>
+</label>
+<label class="flex items-center gap-3 p-3 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer">
+<input type="radio" name="keeps_financial_records" value="No" class="text-primary focus:ring-primary"/>
+<span>No</span>
+</label>
+</div>
+</div>
+
+<!-- Q10: Has Mobile Money -->
+<div class="mb-6">
+<label class="text-sm font-bold mb-3 block">10. Has Mobile Money</label>
+<div class="space-y-2">
+<label class="flex items-center gap-3 p-3 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer">
+<input type="radio" name="has_mobile_money" value="Have now" class="text-primary focus:ring-primary"/>
+<span>Have now</span>
+</label>
+<label class="flex items-center gap-3 p-3 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer">
+<input type="radio" name="has_mobile_money" value="Used to have but don't have now" class="text-primary focus:ring-primary"/>
+<span>Used to have but don't have now</span>
+</label>
+<label class="flex items-center gap-3 p-3 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer">
+<input type="radio" name="has_mobile_money" value="Never had" class="text-primary focus:ring-primary"/>
+<span>Never had</span>
+</label>
+</div>
+</div>
+
+<!-- Q11: Financial Services -->
+<div class="mb-6">
+<label class="text-sm font-bold mb-4 block">11. Has Bank Account / Financial Services</label>
+<div class="space-y-4">
+<div>
+<label class="text-xs uppercase tracking-wider opacity-60 mb-2 block">Has Loan Account</label>
+<div class="grid grid-cols-3 gap-2">
+<label class="flex items-center justify-center gap-2 p-2 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer text-sm">
+<input type="radio" name="has_loan_account" value="Have now" class="text-primary focus:ring-primary"/>
+<span>Have now</span>
+</label>
+<label class="flex items-center justify-center gap-2 p-2 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer text-sm">
+<input type="radio" name="has_loan_account" value="Used to have but don't have now" class="text-primary focus:ring-primary"/>
+<span>Used to have</span>
+</label>
+<label class="flex items-center justify-center gap-2 p-2 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer text-sm">
+<input type="radio" name="has_loan_account" value="Never had" class="text-primary focus:ring-primary"/>
+<span>Never had</span>
+</label>
+</div>
+</div>
+<div>
+<label class="text-xs uppercase tracking-wider opacity-60 mb-2 block">Has Internet Banking</label>
+<div class="grid grid-cols-3 gap-2">
+<label class="flex items-center justify-center gap-2 p-2 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer text-sm">
+<input type="radio" name="has_internet_banking" value="Have now" class="text-primary focus:ring-primary"/>
+<span>Have now</span>
+</label>
+<label class="flex items-center justify-center gap-2 p-2 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer text-sm">
+<input type="radio" name="has_internet_banking" value="Used to have but don't have now" class="text-primary focus:ring-primary"/>
+<span>Used to have</span>
+</label>
+<label class="flex items-center justify-center gap-2 p-2 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer text-sm">
+<input type="radio" name="has_internet_banking" value="Never had" class="text-primary focus:ring-primary"/>
+<span>Never had</span>
+</label>
+</div>
+</div>
+<div>
+<label class="text-xs uppercase tracking-wider opacity-60 mb-2 block">Has Debit Card</label>
+<div class="grid grid-cols-3 gap-2">
+<label class="flex items-center justify-center gap-2 p-2 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer text-sm">
+<input type="radio" name="has_debit_card" value="Have now" class="text-primary focus:ring-primary"/>
+<span>Have now</span>
+</label>
+<label class="flex items-center justify-center gap-2 p-2 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer text-sm">
+<input type="radio" name="has_debit_card" value="Used to have but don't have now" class="text-primary focus:ring-primary"/>
+<span>Used to have</span>
+</label>
+<label class="flex items-center justify-center gap-2 p-2 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer text-sm">
+<input type="radio" name="has_debit_card" value="Never had" class="text-primary focus:ring-primary"/>
+<span>Never had</span>
+</label>
+</div>
+</div>
+<div>
+<label class="text-xs uppercase tracking-wider opacity-60 mb-2 block">Has Credit Card</label>
+<div class="grid grid-cols-2 gap-2">
+<label class="flex items-center justify-center gap-2 p-2 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer text-sm">
+<input type="radio" name="has_credit_card" value="Have now" class="text-primary focus:ring-primary"/>
+<span>Have now</span>
+</label>
+<label class="flex items-center justify-center gap-2 p-2 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer text-sm">
+<input type="radio" name="has_credit_card" value="Never had" class="text-primary focus:ring-primary"/>
+<span>Never had</span>
+</label>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Q12: Offers Credit to Customers -->
+<div class="mb-6">
+<label class="text-sm font-bold mb-3 block">12. Offers Credit to Customers</label>
+<div class="space-y-2">
+<label class="flex items-center gap-3 p-3 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer">
+<input type="radio" name="offers_credit_to_customers" value="Yes, always" class="text-primary focus:ring-primary"/>
+<span>Yes, always</span>
+</label>
+<label class="flex items-center gap-3 p-3 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer">
+<input type="radio" name="offers_credit_to_customers" value="Yes, sometimes" class="text-primary focus:ring-primary"/>
+<span>Yes, sometimes</span>
+</label>
+<label class="flex items-center gap-3 p-3 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer">
+<input type="radio" name="offers_credit_to_customers" value="No" class="text-primary focus:ring-primary"/>
+<span>No</span>
+</label>
+</div>
+</div>
+
+<!-- Q13: Current Problem Cash Flow -->
+<div class="mb-6">
+<label class="text-sm font-bold mb-3 block">13. Current Problem with Cash Flow</label>
+<div class="grid grid-cols-2 gap-3">
+<label class="flex items-center justify-center gap-3 p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer">
+<input type="radio" name="current_problem_cash_flow" value="Yes" class="text-primary focus:ring-primary"/>
+<span>Yes</span>
+</label>
+<label class="flex items-center justify-center gap-3 p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer">
+<input type="radio" name="current_problem_cash_flow" value="No" class="text-primary focus:ring-primary"/>
+<span>No</span>
+</label>
+</div>
+</div>
+
+<!-- Q14: Sources of Funding -->
+<div class="mb-6">
+<label class="text-sm font-bold mb-4 block">14. Sources of Funding (if needed)</label>
+<div class="space-y-4">
+<div>
+<label class="text-xs uppercase tracking-wider opacity-60 mb-2 block">Uses Friends/Family Savings</label>
+<div class="grid grid-cols-3 gap-2">
+<label class="flex items-center justify-center gap-2 p-2 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer text-sm">
+<input type="radio" name="uses_friends_family_savings" value="Have now" class="text-primary focus:ring-primary"/>
+<span>Have now</span>
+</label>
+<label class="flex items-center justify-center gap-2 p-2 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer text-sm">
+<input type="radio" name="uses_friends_family_savings" value="Used to have but don't have now" class="text-primary focus:ring-primary"/>
+<span>Used to have</span>
+</label>
+<label class="flex items-center justify-center gap-2 p-2 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer text-sm">
+<input type="radio" name="uses_friends_family_savings" value="Never had" class="text-primary focus:ring-primary"/>
+<span>Never had</span>
+</label>
+</div>
+</div>
+<div>
+<label class="text-xs uppercase tracking-wider opacity-60 mb-2 block">Uses Informal Lender</label>
+<div class="grid grid-cols-3 gap-2">
+<label class="flex items-center justify-center gap-2 p-2 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer text-sm">
+<input type="radio" name="uses_informal_lender" value="Have now" class="text-primary focus:ring-primary"/>
+<span>Have now</span>
+</label>
+<label class="flex items-center justify-center gap-2 p-2 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer text-sm">
+<input type="radio" name="uses_informal_lender" value="Used to have but don't have now" class="text-primary focus:ring-primary"/>
+<span>Used to have</span>
+</label>
+<label class="flex items-center justify-center gap-2 p-2 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer text-sm">
+<input type="radio" name="uses_informal_lender" value="Never had" class="text-primary focus:ring-primary"/>
+<span>Never had</span>
+</label>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Section 3: Insurance & Risk -->
+<div class="bg-card-light dark:bg-card-dark border border-gray-200 dark:border-gray-800 rounded-xl p-5 shadow-sm">
+<h2 class="text-xl font-bold mb-4 text-primary">Section 3: Insurance & Risk</h2>
+
+<!-- Q15: Insurance Usage -->
+<div class="mb-6">
+<label class="text-sm font-bold mb-4 block">15. Insurance Usage</label>
+<div class="space-y-4">
+<div>
+<label class="text-xs uppercase tracking-wider opacity-60 mb-2 block">Has Business Insurance</label>
+<div class="grid grid-cols-2 gap-2">
+<label class="flex items-center justify-center gap-2 p-3 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer">
+<input type="radio" name="has_insurance" value="Yes" class="text-primary focus:ring-primary"/>
+<span>Yes</span>
+</label>
+<label class="flex items-center justify-center gap-2 p-3 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer">
+<input type="radio" name="has_insurance" value="No" class="text-primary focus:ring-primary"/>
+<span>No</span>
+</label>
+</div>
+</div>
+<div>
+<label class="text-xs uppercase tracking-wider opacity-60 mb-2 block">Motor Vehicle Insurance</label>
+<div class="grid grid-cols-3 gap-2">
+<label class="flex items-center justify-center gap-2 p-2 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer text-sm">
+<input type="radio" name="motor_vehicle_insurance" value="Have now" class="text-primary focus:ring-primary"/>
+<span>Have now</span>
+</label>
+<label class="flex items-center justify-center gap-2 p-2 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer text-sm">
+<input type="radio" name="motor_vehicle_insurance" value="Used to have but don't have now" class="text-primary focus:ring-primary"/>
+<span>Used to have</span>
+</label>
+<label class="flex items-center justify-center gap-2 p-2 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer text-sm">
+<input type="radio" name="motor_vehicle_insurance" value="Never had" class="text-primary focus:ring-primary"/>
+<span>Never had</span>
+</label>
+</div>
+</div>
+<div>
+<label class="text-xs uppercase tracking-wider opacity-60 mb-2 block">Medical Insurance</label>
+<div class="grid grid-cols-3 gap-2">
+<label class="flex items-center justify-center gap-2 p-2 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer text-sm">
+<input type="radio" name="medical_insurance" value="Have now" class="text-primary focus:ring-primary"/>
+<span>Have now</span>
+</label>
+<label class="flex items-center justify-center gap-2 p-2 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer text-sm">
+<input type="radio" name="medical_insurance" value="Used to have but don't have now" class="text-primary focus:ring-primary"/>
+<span>Used to have</span>
+</label>
+<label class="flex items-center justify-center gap-2 p-2 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer text-sm">
+<input type="radio" name="medical_insurance" value="Never had" class="text-primary focus:ring-primary"/>
+<span>Never had</span>
+</label>
+</div>
+</div>
+<div>
+<label class="text-xs uppercase tracking-wider opacity-60 mb-2 block">Funeral Insurance</label>
+<div class="grid grid-cols-3 gap-2">
+<label class="flex items-center justify-center gap-2 p-2 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer text-sm">
+<input type="radio" name="funeral_insurance" value="Have now" class="text-primary focus:ring-primary"/>
+<span>Have now</span>
+</label>
+<label class="flex items-center justify-center gap-2 p-2 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer text-sm">
+<input type="radio" name="funeral_insurance" value="Used to have but don't have now" class="text-primary focus:ring-primary"/>
+<span>Used to have</span>
+</label>
+<label class="flex items-center justify-center gap-2 p-2 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer text-sm">
+<input type="radio" name="funeral_insurance" value="Never had" class="text-primary focus:ring-primary"/>
+<span>Never had</span>
+</label>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Q16: Perceptions on Insurance -->
+<div class="mb-6">
+<label class="text-sm font-bold mb-4 block">16. Perceptions on Insurance</label>
+<div class="space-y-4">
+<div>
+<label class="text-xs uppercase tracking-wider opacity-60 mb-2 block">Is Insurance Important?</label>
+<div class="grid grid-cols-3 gap-2">
+<label class="flex items-center justify-center gap-2 p-2 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer text-sm">
+<input type="radio" name="perception_insurance_important" value="Yes" class="text-primary focus:ring-primary"/>
+<span>Yes</span>
+</label>
+<label class="flex items-center justify-center gap-2 p-2 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer text-sm">
+<input type="radio" name="perception_insurance_important" value="No" class="text-primary focus:ring-primary"/>
+<span>No</span>
+</label>
+<label class="flex items-center justify-center gap-2 p-2 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer text-sm">
+<input type="radio" name="perception_insurance_important" value="Don't know" class="text-primary focus:ring-primary"/>
+<span>Don't know</span>
+</label>
+</div>
+</div>
+<div>
+<label class="text-xs uppercase tracking-wider opacity-60 mb-2 block">Does Insurance Cover Losses?</label>
+<div class="grid grid-cols-3 gap-2">
+<label class="flex items-center justify-center gap-2 p-2 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer text-sm">
+<input type="radio" name="perception_insurance_doesnt_cover_losses" value="Yes" class="text-primary focus:ring-primary"/>
+<span>Yes</span>
+</label>
+<label class="flex items-center justify-center gap-2 p-2 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer text-sm">
+<input type="radio" name="perception_insurance_doesnt_cover_losses" value="No" class="text-primary focus:ring-primary"/>
+<span>No</span>
+</label>
+<label class="flex items-center justify-center gap-2 p-2 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer text-sm">
+<input type="radio" name="perception_insurance_doesnt_cover_losses" value="Don't know" class="text-primary focus:ring-primary"/>
+<span>Don't know</span>
+</label>
+</div>
+</div>
+<div>
+<label class="text-xs uppercase tracking-wider opacity-60 mb-2 block">Can You Afford Insurance?</label>
+<div class="grid grid-cols-3 gap-2">
+<label class="flex items-center justify-center gap-2 p-2 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer text-sm">
+<input type="radio" name="perception_cannot_afford_insurance" value="Yes" class="text-primary focus:ring-primary"/>
+<span>Yes</span>
+</label>
+<label class="flex items-center justify-center gap-2 p-2 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer text-sm">
+<input type="radio" name="perception_cannot_afford_insurance" value="No" class="text-primary focus:ring-primary"/>
+<span>No</span>
+</label>
+<label class="flex items-center justify-center gap-2 p-2 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer text-sm">
+<input type="radio" name="perception_cannot_afford_insurance" value="Don't know" class="text-primary focus:ring-primary"/>
+<span>Don't know</span>
+</label>
+</div>
+</div>
+<div>
+<label class="text-xs uppercase tracking-wider opacity-60 mb-2 block">Do Companies Insure Businesses Like Yours?</label>
+<div class="grid grid-cols-3 gap-2">
+<label class="flex items-center justify-center gap-2 p-2 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer text-sm">
+<input type="radio" name="perception_insurance_companies_dont_insure_businesses_like_yours" value="Yes" class="text-primary focus:ring-primary"/>
+<span>Yes</span>
+</label>
+<label class="flex items-center justify-center gap-2 p-2 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer text-sm">
+<input type="radio" name="perception_insurance_companies_dont_insure_businesses_like_yours" value="No" class="text-primary focus:ring-primary"/>
+<span>No</span>
+</label>
+<label class="flex items-center justify-center gap-2 p-2 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer text-sm">
+<input type="radio" name="perception_insurance_companies_dont_insure_businesses_like_yours" value="Don't know" class="text-primary focus:ring-primary"/>
+<span>Don't know</span>
+</label>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Q17: Future Risk Theft Stock -->
+<div class="mb-6">
+<label class="text-sm font-bold mb-3 block">17. Future Risk: Theft of Stock</label>
+<div class="grid grid-cols-2 gap-3">
+<label class="flex items-center justify-center gap-3 p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer">
+<input type="radio" name="future_risk_theft_stock" value="Yes" class="text-primary focus:ring-primary"/>
+<span>Yes</span>
+</label>
+<label class="flex items-center justify-center gap-3 p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer">
+<input type="radio" name="future_risk_theft_stock" value="No" class="text-primary focus:ring-primary"/>
+<span>No</span>
+</label>
+</div>
+</div>
+</div>
+
+<!-- Section 4: Attitudes & Compliance -->
+<div class="bg-card-light dark:bg-card-dark border border-gray-200 dark:border-gray-800 rounded-xl p-5 shadow-sm">
+<h2 class="text-xl font-bold mb-4 text-primary">Section 4: Attitudes & Compliance</h2>
+
+<!-- Q18: Attitude Stable Business Environment -->
+<div class="mb-6">
+<label class="text-sm font-bold mb-3 block">18. Attitude: Stable Business Environment</label>
+<div class="space-y-2">
+<label class="flex items-center gap-3 p-3 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer">
+<input type="radio" name="attitude_stable_business_environment" value="Yes" class="text-primary focus:ring-primary"/>
+<span>Yes</span>
+</label>
+<label class="flex items-center gap-3 p-3 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer">
+<input type="radio" name="attitude_stable_business_environment" value="No" class="text-primary focus:ring-primary"/>
+<span>No</span>
+</label>
+<label class="flex items-center gap-3 p-3 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer">
+<input type="radio" name="attitude_stable_business_environment" value="Don't know or N/A" class="text-primary focus:ring-primary"/>
+<span>Don't know or N/A</span>
+</label>
+</div>
+</div>
+
+<!-- Q19: Attitude Worried Shutdown -->
+<div class="mb-6">
+<label class="text-sm font-bold mb-3 block">19. Attitude: Worried about Shutdown</label>
+<div class="grid grid-cols-2 gap-3">
+<label class="flex items-center justify-center gap-3 p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer">
+<input type="radio" name="attitude_worried_shutdown" value="Yes" class="text-primary focus:ring-primary"/>
+<span>Yes</span>
+</label>
+<label class="flex items-center justify-center gap-3 p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer">
+<input type="radio" name="attitude_worried_shutdown" value="No" class="text-primary focus:ring-primary"/>
+<span>No</span>
+</label>
+</div>
+</div>
+
+<!-- Q20: Attitude Satisfied With Achievement -->
+<div class="mb-6">
+<label class="text-sm font-bold mb-3 block">20. Attitude: Satisfied with Achievement</label>
+<div class="grid grid-cols-2 gap-3">
+<label class="flex items-center justify-center gap-3 p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer">
+<input type="radio" name="attitude_satisfied_with_achievement" value="Yes" class="text-primary focus:ring-primary"/>
+<span>Yes</span>
+</label>
+<label class="flex items-center justify-center gap-3 p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer">
+<input type="radio" name="attitude_satisfied_with_achievement" value="No" class="text-primary focus:ring-primary"/>
+<span>No</span>
+</label>
+</div>
+</div>
+
+<!-- Q21: Attitude More Successful Next Year -->
+<div class="mb-6">
+<label class="text-sm font-bold mb-3 block">21. Attitude: Expect to be More Successful Next Year</label>
+<div class="space-y-2">
+<label class="flex items-center gap-3 p-3 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer">
+<input type="radio" name="attitude_more_successful_next_year" value="Yes" class="text-primary focus:ring-primary"/>
+<span>Yes</span>
+</label>
+<label class="flex items-center gap-3 p-3 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer">
+<input type="radio" name="attitude_more_successful_next_year" value="No" class="text-primary focus:ring-primary"/>
+<span>No</span>
+</label>
+<label class="flex items-center gap-3 p-3 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer">
+<input type="radio" name="attitude_more_successful_next_year" value="Don't know" class="text-primary focus:ring-primary"/>
+<span>Don't know</span>
+</label>
+</div>
+</div>
+
+<!-- Q22: Compliance Income Tax -->
+<div class="mb-6">
+<label class="text-sm font-bold mb-3 block">22. Compliance: Income Tax</label>
+<div class="space-y-2">
+<label class="flex items-center gap-3 p-3 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer">
+<input type="radio" name="compliance_income_tax" value="Yes" class="text-primary focus:ring-primary"/>
+<span>Yes</span>
+</label>
+<label class="flex items-center gap-3 p-3 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer">
+<input type="radio" name="compliance_income_tax" value="No" class="text-primary focus:ring-primary"/>
+<span>No</span>
+</label>
+<label class="flex items-center gap-3 p-3 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer">
+<input type="radio" name="compliance_income_tax" value="Don't know" class="text-primary focus:ring-primary"/>
+<span>Don't know</span>
+</label>
+</div>
+</div>
+</div>
+
+<!-- Section 5: Operations -->
+<div class="bg-card-light dark:bg-card-dark border border-gray-200 dark:border-gray-800 rounded-xl p-5 shadow-sm">
+<h2 class="text-xl font-bold mb-4 text-primary">Section 5: Operations</h2>
+
+<!-- Q23: Has Cellphone -->
+<div class="mb-6">
+<label class="text-sm font-bold mb-3 block">23. Has Cellphone</label>
+<div class="grid grid-cols-2 gap-3">
+<label class="flex items-center justify-center gap-3 p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer">
+<input type="radio" name="has_cellphone" value="Yes" class="text-primary focus:ring-primary"/>
+<span>Yes</span>
+</label>
+<label class="flex items-center justify-center gap-3 p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer">
+<input type="radio" name="has_cellphone" value="No" class="text-primary focus:ring-primary"/>
+<span>No</span>
+</label>
+</div>
+</div>
+
+<!-- Q24: Marketing Word of Mouth -->
+<div class="mb-6">
+<label class="text-sm font-bold mb-3 block">24. Marketing: Uses Word of Mouth</label>
+<div class="grid grid-cols-2 gap-3">
+<label class="flex items-center justify-center gap-3 p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer">
+<input type="radio" name="marketing_word_of_mouth" value="Yes" class="text-primary focus:ring-primary"/>
+<span>Yes</span>
+</label>
+<label class="flex items-center justify-center gap-3 p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer">
+<input type="radio" name="marketing_word_of_mouth" value="No" class="text-primary focus:ring-primary"/>
+<span>No</span>
+</label>
+</div>
+</div>
+
+<!-- Q25: Problem Sourcing Money -->
+<div class="mb-6">
+<label class="text-sm font-bold mb-3 block">25. Problem Sourcing Money</label>
+<div class="grid grid-cols-2 gap-3">
+<label class="flex items-center justify-center gap-3 p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer">
+<input type="radio" name="problem_sourcing_money" value="Yes" class="text-primary focus:ring-primary"/>
+<span>Yes</span>
+</label>
+<label class="flex items-center justify-center gap-3 p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer">
+<input type="radio" name="problem_sourcing_money" value="No" class="text-primary focus:ring-primary"/>
+<span>No</span>
+</label>
+</div>
+</div>
+
+<!-- Q26: Motivation Make More Money -->
+<div class="mb-6">
+<label class="text-sm font-bold mb-3 block">26. Motivation: Make More Money</label>
+<div class="grid grid-cols-2 gap-3">
+<label class="flex items-center justify-center gap-3 p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer">
+<input type="radio" name="motivation_make_more_money" value="Yes" class="text-primary focus:ring-primary"/>
+<span>Yes</span>
+</label>
+<label class="flex items-center justify-center gap-3 p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary/50 cursor-pointer">
+<input type="radio" name="motivation_make_more_money" value="No" class="text-primary focus:ring-primary"/>
+<span>No</span>
+</label>
+</div>
+</div>
+</div>
+
+<!-- Model Insight Box -->
+<div class="mt-6 p-4 bg-gray-50 dark:bg-zinc-800/50 rounded-lg border-l-2 border-primary">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-primary text-sm">monitoring</span>
+<span class="text-[10px] font-bold uppercase tracking-widest text-primary">Model Insight</span>
+</div>
+<p class="text-sm font-normal text-gray-600 dark:text-gray-400 leading-relaxed">
+                    Your responses will help us assess your business financial health and risk profile. This survey contains <span class="text-primary font-bold">27 questions</span> across 5 categories.
+                </p>
+<div class="mt-2 flex gap-1">
+<div class="w-1 h-1 bg-primary rounded-full animate-pulse"></div>
+<div class="w-1 h-1 bg-primary/40 rounded-full"></div>
+<div class="w-1 h-1 bg-primary/20 rounded-full"></div>
+</div>
+</div>
+
+</form>
+</main>
+<!-- Footer (glowy theme) -->
+<footer class="bg-slate-50 dark:bg-slate-900/50 border-t border-slate-200 dark:border-slate-800 py-12 px-6 mt-12">
+<div class="flex flex-col items-center gap-8">
+<div class="flex items-center gap-2">
+<div class="bg-primary text-white p-1 rounded-lg">
+<span class="material-symbols-outlined text-lg">terminal</span>
+</div>
+<span class="font-bold">FinHealth</span>
+</div>
+<div class="flex gap-6">
+<a class="text-slate-400 hover:text-primary" href="#"><span class="material-symbols-outlined">code</span></a>
+<a class="text-slate-400 hover:text-primary" href="#"><span class="material-symbols-outlined">person</span></a>
+<a class="text-slate-400 hover:text-primary" href="#"><span class="material-symbols-outlined">link</span></a>
+<a class="text-slate-400 hover:text-primary" href="#"><span class="material-symbols-outlined">mail</span></a>
+</div>
+<p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">© 2024 FinHealth Africa. Data Driven.</p>
+</div>
+</footer>
+</body></html>
