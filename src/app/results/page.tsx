@@ -38,11 +38,11 @@ export default function ResultsPage() {
 
   if (loading) {
     return (
-      <main className="pt-24 pb-32 px-4 max-w-5xl mx-auto flex flex-col items-center justify-center">
+      <main className="pt-16 sm:pt-24 pb-20 sm:pb-32 px-3 sm:px-4 max-w-5xl mx-auto flex flex-col items-center justify-center">
         <div className="animate-spin rounded-full h-12 w-12 border-4 border-primary border-t-transparent mb-4"></div>
         <div className="text-center">
-          <h2 className="text-lg font-bold mb-2">Processing ML Analysis...</h2>
-          <p className="text-sm text-slate-600">Running ensemble algorithms and risk assessment</p>
+          <h2 className="text-base sm:text-lg font-bold mb-2">Processing ML Analysis...</h2>
+          <p className="text-xs sm:text-sm text-slate-600">Running ensemble algorithms and risk assessment</p>
         </div>
       </main>
     );
@@ -50,14 +50,14 @@ export default function ResultsPage() {
 
   if (!results) {
     return (
-      <main className="pt-24 pb-32 px-4 max-w-5xl mx-auto">
-        <div className="text-center bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-xl p-8">
+      <main className="pt-16 sm:pt-24 pb-20 sm:pb-32 px-3 sm:px-4 max-w-5xl mx-auto">
+        <div className="text-center bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-xl p-6 sm:p-8">
           <div className="w-16 h-16 bg-red-100 dark:bg-red-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
             <span className="material-symbols-outlined text-red-600 text-2xl">error</span>
           </div>
-          <h1 className="text-2xl font-bold mb-4 text-red-700 dark:text-red-400">Analysis Data Not Found</h1>
-          <p className="text-red-600 dark:text-red-400 mb-6">ML model predictions require completed survey data. Please retake the assessment.</p>
-          <Link href="/survey" className="bg-primary text-white px-8 py-3 rounded-xl font-bold hover:bg-primary/90 transition-colors">
+          <h1 className="text-xl sm:text-2xl font-bold mb-4 text-red-700 dark:text-red-400">Analysis Data Not Found</h1>
+          <p className="text-red-600 dark:text-red-400 mb-6 text-sm sm:text-base">ML model predictions require completed survey data. Please retake the assessment.</p>
+          <Link href="/survey" className="bg-primary text-white px-6 sm:px-8 py-3 rounded-xl font-bold hover:bg-primary/90 transition-colors text-sm sm:text-base">
             Complete Financial Assessment
           </Link>
         </div>

@@ -95,9 +95,9 @@ export default function SurveyPage() {
         <div className="h-1 w-full bg-gray-200 dark:bg-gray-800">
           <div className="h-full bg-primary transition-all" style={{ width: `${progress}%` }}></div>
         </div>
-        <div className="flex items-center justify-between px-4 py-3">
+        <div className="flex items-center justify-between px-3 sm:px-4 py-3">
           <Link href="/" className="flex items-center justify-center p-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
-            <span className="material-symbols-outlined text-2xl">close</span>
+            <span className="material-symbols-outlined text-xl sm:text-2xl">close</span>
           </Link>
           <div className="text-center">
             <h2 className="text-sm font-bold tracking-tight uppercase opacity-60">FinHealth Survey</h2>

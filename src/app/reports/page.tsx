@@ -16,49 +16,53 @@ const ReportCard = ({ title, description, children, insight }: {
   children: React.ReactNode;
   insight: string;
 }) => (
-  <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-6 shadow-sm">
-    <div className="mb-4">
-      <h3 className="text-lg font-bold mb-2">{title}</h3>
-      <p className="text-sm text-slate-600 dark:text-slate-400">{description}</p>
+  <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-4 sm:p-6 shadow-sm">
+    <div className="mb-3 sm:mb-4">
+      <h3 className="text-base sm:text-lg font-bold mb-2">{title}</h3>
+      <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400">{description}</p>
     </div>
     
-    <div className="mb-4">
+    <div className="mb-3 sm:mb-4">
       {children}
     </div>
     
-    <div className="border-t border-slate-200 dark:border-slate-800 pt-4">
+    <div className="border-t border-slate-200 dark:border-slate-800 pt-3 sm:pt-4">
       <div className="flex items-center gap-2 mb-2">
         <span className="material-symbols-outlined text-primary text-sm">insights</span>
         <span className="text-xs font-bold uppercase tracking-wider text-primary">Key Insight</span>
       </div>
-      <p className="text-sm text-slate-700 dark:text-slate-300">{insight}</p>
+      <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300">{insight}</p>
     </div>
   </div>
 );
 
-const PieChart = ({ data, size = 200 }: { data: ChartData[]; size?: number }) => {
+const PieChart = ({ data, size = 160 }: { data: ChartData[]; size?: number }) => {
   const total = data.reduce((sum, item) => sum + item.value, 0);
   let cumulativeAngle = 0;
+  
+  // Responsive sizing
+  const isMobile = typeof window !== 'undefined' ? window.innerWidth < 640 : false;
+  const chartSize = isMobile ? Math.min(size, 140) : size;
 
   return (
     <div className="flex items-center justify-center">
-      <svg width={size} height={size} className="transform -rotate-90">
+      <svg width={chartSize} height={chartSize} className="transform -rotate-90">
         {data.map((item, index) => {
           const angle = (item.value / total) * 360;
           const startAngle = cumulativeAngle;
           const endAngle = startAngle + angle;
           
-          const x1 = size/2 + (size/2 - 20) * Math.cos(startAngle * Math.PI / 180);
-          const y1 = size/2 + (size/2 - 20) * Math.sin(startAngle * Math.PI / 180);
-          const x2 = size/2 + (size/2 - 20) * Math.cos(endAngle * Math.PI / 180);
-          const y2 = size/2 + (size/2 - 20) * Math.sin(endAngle * Math.PI / 180);
+          const x1 = chartSize/2 + (chartSize/2 - 20) * Math.cos(startAngle * Math.PI / 180);
+          const y1 = chartSize/2 + (chartSize/2 - 20) * Math.sin(startAngle * Math.PI / 180);
+          const x2 = chartSize/2 + (chartSize/2 - 20) * Math.cos(endAngle * Math.PI / 180);
+          const y2 = chartSize/2 + (chartSize/2 - 20) * Math.sin(endAngle * Math.PI / 180);
           
           const largeArcFlag = angle > 180 ? 1 : 0;
           
           const pathData = [
-            `M ${size/2} ${size/2}`,
+            `M ${chartSize/2} ${chartSize/2}`,
             `L ${x1} ${y1}`,
-            `A ${size/2 - 20} ${size/2 - 20} 0 ${largeArcFlag} 1 ${x2} ${y2}`,
+            `A ${chartSize/2 - 20} ${chartSize/2 - 20} 0 ${largeArcFlag} 1 ${x2} ${y2}`,
             'Z'
           ].join(' ');
           
@@ -157,16 +161,16 @@ export default function ReportsPage() {
   ];
 
   return (
-    <main className="pt-24 pb-20 max-w-6xl mx-auto px-4">
-      <div className="mb-10 text-center">
-        <h1 className="text-4xl font-bold mb-2 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+    <main className="pt-16 sm:pt-24 pb-12 sm:pb-20 max-w-6xl mx-auto px-3 sm:px-4">
+      <div className="mb-8 sm:mb-10 text-center">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
           Advanced ML Analytics Dashboard
         </h1>
-        <p className="text-slate-600 dark:text-slate-400 text-lg max-w-4xl mx-auto leading-relaxed">
+        <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base md:text-lg max-w-4xl mx-auto leading-relaxed">
           Comprehensive statistical analysis of <span className="font-bold text-primary">{(9618).toLocaleString()}</span> SME enterprises utilizing Random Forest ensemble learning with <span className="font-bold">85% predictive accuracy</span>. 
           Multi-dimensional feature engineering across <span className="font-bold">17 engineered variables</span> with advanced statistical inference, causal analysis, and econometric modeling frameworks.
         </p>
-        <div className="mt-4 flex justify-center gap-6 text-sm">
+        <div className="mt-4 flex flex-wrap justify-center gap-3 sm:gap-6 text-xs sm:text-sm">
           <span className="flex items-center gap-2">
             <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
             <span>ROC-AUC: <strong>0.892</strong></span>
@@ -183,7 +187,7 @@ export default function ReportsPage() {
       </div>
 
       {/* Advanced ML Performance Metrics */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-6 sm:mb-8">
         <div className="bg-gradient-to-br from-blue-500/10 to-blue-600/20 border border-blue-500/30 rounded-xl p-4 text-center">
           <div className="text-2xl font-bold text-blue-600">{(9618).toLocaleString()}</div>
           <div className="text-xs text-slate-600 dark:text-slate-400 font-medium">Training Observations</div>
@@ -207,7 +211,7 @@ export default function ReportsPage() {
       </div>
       
       {/* Statistical Distribution Metrics */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 mb-6 sm:mb-8">
         <div className="bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl p-5">
           <h3 className="text-sm font-bold text-slate-700 dark:text-slate-300 mb-3">Class Imbalance Analysis</h3>
           <div className="space-y-2">
@@ -654,7 +658,7 @@ export default function ReportsPage() {
           Recommendations derived from causal inference models, cost-benefit analysis, and predictive impact assessment
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
           <div className="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-sm border border-slate-200 dark:border-slate-700">
             <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-yellow-500 rounded-xl flex items-center justify-center mx-auto mb-4">
               <span className="material-symbols-outlined text-white text-2xl">psychology</span>
@@ -739,7 +743,7 @@ export default function ReportsPage() {
         
         <div className="mt-8 bg-white dark:bg-slate-800 rounded-xl p-6 border border-slate-200 dark:border-slate-700">
           <h3 className="text-lg font-bold mb-4 text-center">Integrated Policy Impact Simulation</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             <div className="text-center">
               <div className="text-3xl font-bold text-blue-600 mb-2">+34.7%</div>
               <div className="text-sm text-slate-600 dark:text-slate-400">Projected Financial Health Improvement</div>

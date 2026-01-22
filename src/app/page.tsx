@@ -2,43 +2,43 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="pt-24 pb-20 space-y-12 overflow-x-hidden">
+    <main className="pt-16 sm:pt-24 pb-12 sm:pb-20 space-y-8 sm:space-y-12 overflow-x-hidden">
       {/* Hero Section - The Data Story */}
-      <section className="px-4">
-        <div className="relative overflow-hidden bg-card-light dark:bg-card-dark rounded-3xl border border-slate-200 dark:border-slate-800 p-6 code-bg">
-          <div className="relative z-10 flex flex-col gap-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary w-fit">
+      <section className="px-3 sm:px-4">
+        <div className="relative overflow-hidden bg-card-light dark:bg-card-dark rounded-2xl sm:rounded-3xl border border-slate-200 dark:border-slate-800 p-4 sm:p-6 code-bg">
+          <div className="relative z-10 flex flex-col gap-4 sm:gap-6">
+            <div className="inline-flex items-center gap-2 px-2 sm:px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary w-fit">
               <span className="material-symbols-outlined text-sm">psychology</span>
               <span className="text-xs font-bold uppercase tracking-tighter">Random Forest Ensemble • 85% Accuracy</span>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold leading-[1.1] tracking-tight">
+            <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold leading-[1.1] tracking-tight">
               Unveiling the <span className="text-primary">Hidden Patterns</span> in SME Financial Distress
             </h1>
-            <p className="text-slate-600 dark:text-slate-400 text-base leading-relaxed max-w-2xl">
+            <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base leading-relaxed max-w-2xl">
               Through advanced feature engineering and ensemble learning on <strong>9,618 business records</strong> across Southern Africa, 
               our ML pipeline reveals that <strong>65.3% of SMEs</strong> exhibit high financial risk indicators—a systemic vulnerability demanding immediate intervention.
             </p>
             
             {/* Model Performance Metrics */}
-            <div className="grid grid-cols-3 gap-3 py-4">
-              <div className="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
-                <p className="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-1">Feature Importance</p>
+            <div className="grid grid-cols-3 gap-2 sm:gap-3 py-3 sm:py-4">
+              <div className="bg-white dark:bg-slate-900 p-2 sm:p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                <p className="text-[8px] sm:text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-1">Feature Importance</p>
                 <div className="flex items-end gap-1">
-                  <span className="text-2xl font-bold text-blue-600">0.84</span>
+                  <span className="text-lg sm:text-2xl font-bold text-blue-600">0.84</span>
                   <span className="text-blue-600 text-xs font-bold mb-1">Gini</span>
                 </div>
               </div>
-              <div className="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
-                <p className="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-1">Precision@K</p>
+              <div className="bg-white dark:bg-slate-900 p-2 sm:p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                <p className="text-[8px] sm:text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-1">Precision@K</p>
                 <div className="flex items-end gap-1">
-                  <span className="text-2xl font-bold text-green-600">0.87</span>
+                  <span className="text-lg sm:text-2xl font-bold text-green-600">0.87</span>
                   <span className="text-green-600 text-xs font-bold mb-1">Top-1</span>
                 </div>
               </div>
-              <div className="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
-                <p className="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-1">Cross-Validation</p>
+              <div className="bg-white dark:bg-slate-900 p-2 sm:p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                <p className="text-[8px] sm:text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-1">Cross-Validation</p>
                 <div className="flex items-end gap-1">
-                  <span className="text-2xl font-bold text-purple-600">5-Fold</span>
+                  <span className="text-sm sm:text-2xl font-bold text-purple-600">5-Fold</span>
                   <span className="text-purple-600 text-xs font-bold mb-1">CV</span>
                 </div>
               </div>
@@ -46,7 +46,7 @@ export default function Home() {
             
             <Link
               href="/survey"
-              className="bg-primary text-white h-14 rounded-xl font-bold text-lg glow-cyan flex items-center justify-center gap-2 group hover:bg-primary/90 transition-colors"
+              className="bg-primary text-white h-12 sm:h-14 rounded-xl font-bold text-base sm:text-lg glow-cyan flex items-center justify-center gap-2 group hover:bg-primary/90 transition-colors"
             >
               Initialize Risk Assessment Pipeline
               <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">functions</span>
@@ -102,51 +102,51 @@ export default function Home() {
         </div>
 
         {/* Feature Engineering Insights */}
-        <div className="px-4">
-          <div className="bg-slate-900 text-white rounded-3xl p-6 overflow-hidden relative">
+        <div className="px-3 sm:px-4">
+          <div className="bg-slate-900 text-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 overflow-hidden relative">
             <div className="absolute top-0 right-0 p-4 opacity-10">
-              <span className="material-symbols-outlined text-[120px]">scatter_plot</span>
+              <span className="material-symbols-outlined text-[80px] sm:text-[120px]">scatter_plot</span>
             </div>
-            <div className="relative z-10 flex flex-col gap-4">
-              <div className="flex items-center gap-3 mb-2">
+            <div className="relative z-10 flex flex-col gap-3 sm:gap-4">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mb-2">
                 <p className="text-slate-400 text-xs font-bold uppercase tracking-widest">Feature Importance Analysis</p>
-                <span className="bg-primary/20 text-primary px-2 py-1 rounded text-xs font-bold">SHAP Values</span>
+                <span className="bg-primary/20 text-primary px-2 py-1 rounded text-xs font-bold w-fit">SHAP Values</span>
               </div>
-              <h3 className="text-3xl font-bold">Top Predictive Features</h3>
+              <h3 className="text-2xl sm:text-3xl font-bold">Top Predictive Features</h3>
               <p className="text-primary text-sm font-medium">Ranked by Gini Importance (n=17 engineered features)</p>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
-                <div className="space-y-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mt-4 sm:mt-6">
+                <div className="space-y-2 sm:space-y-3">
                   <div className="flex justify-between items-center">
-                    <span className="text-sm">personal_income (log-transformed)</span>
-                    <span className="text-primary font-bold">0.24</span>
+                    <span className="text-xs sm:text-sm pr-2">personal_income (log-transformed)</span>
+                    <span className="text-primary font-bold text-sm">0.24</span>
                   </div>
                   <div className="w-full bg-slate-800 rounded-full h-2">
                     <div className="bg-primary h-2 rounded-full" style={{ width: '85%' }}></div>
                   </div>
                 </div>
                 
-                <div className="space-y-3">
+                <div className="space-y-2 sm:space-y-3">
                   <div className="flex justify-between items-center">
-                    <span className="text-sm">business_turnover (normalized)</span>
-                    <span className="text-yellow-400 font-bold">0.18</span>
+                    <span className="text-xs sm:text-sm pr-2">business_turnover (normalized)</span>
+                    <span className="text-yellow-400 font-bold text-sm">0.18</span>
                   </div>
                   <div className="w-full bg-slate-800 rounded-full h-2">
                     <div className="bg-yellow-400 h-2 rounded-full" style={{ width: '65%' }}></div>
                   </div>
                 </div>
                 
-                <div className="space-y-3">
+                <div className="space-y-2 sm:space-y-3">
                   <div className="flex justify-between items-center">
-                    <span className="text-sm">has_insurance (binary encoded)</span>
-                    <span className="text-green-400 font-bold">0.15</span>
+                    <span className="text-xs sm:text-sm pr-2">has_insurance (binary encoded)</span>
+                    <span className="text-green-400 font-bold text-sm">0.15</span>
                   </div>
                   <div className="w-full bg-slate-800 rounded-full h-2">
                     <div className="bg-green-400 h-2 rounded-full" style={{ width: '55%' }}></div>
                   </div>
                 </div>
                 
-                <div className="space-y-3">
+                <div className="space-y-2 sm:space-y-3">
                   <div className="flex justify-between items-center">
                     <span className="text-sm">compliance_income_tax (OHE)</span>
                     <span className="text-blue-400 font-bold">0.12</span>
