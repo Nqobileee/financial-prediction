@@ -1,0 +1,72 @@
+{
+  "basic_stats": {
+    "total_businesses": 9618,
+    "countries": {
+      "eswatini": 2674,
+      "zimbabwe": 2612,
+      "malawi": 2388,
+      "lesotho": 1944
+    },
+    "target_distribution": {
+      "Low": 6280,
+      "Medium": 2868,
+      "High": 470
+    },
+    "average_business_age": 7.030535981208627,
+    "insurance_coverage": 287,
+    "mobile_money_adoption": 4876,
+    "tax_compliance": 1252,
+    "financial_records_keeping": {
+      "No": 3334,
+      "Yes, sometimes": 1671,
+      "Yes, always": 1525,
+      "Yes": 1139
+    },
+    "gender_distribution": {
+      "Female": 4303,
+      "Male": 3371
+    },
+    "age_ranges": {
+      "under_30": 1781,
+      "30_40": 2986,
+      "40_50": 2359,
+      "over_50": 2492
+    }
+  },
+  "financial_stats": {
+    "avg_personal_income": 262734.47373540857,
+    "avg_business_expenses": 458383.84492491215,
+    "avg_business_turnover": 1348209.7165496703,
+    "income_ranges": {
+      "low": 6618,
+      "medium": 773,
+      "high": 2118
+    }
+  },
+  "risk_analysis": {
+    "Low": {
+      "count": 6280,
+      "avg_income": 254094.82303913674,
+      "avg_turnover": 1253353.3900732303,
+      "insurance_rate": 0.0,
+      "mobile_money_rate": 46.28980891719745,
+      "tax_compliance_rate": 8.789808917197451
+    },
+    "Medium": {
+      "count": 2868,
+      "avg_income": 180199.9702045134,
+      "avg_turnover": 852437.0687186829,
+      "insurance_rate": 6.4156206415620645,
+      "mobile_money_rate": 56.69456066945606,
+      "tax_compliance_rate": 17.08507670850767
+    },
+    "High": {
+      "count": 470,
+      "avg_income": 882802.239224138,
+      "avg_turnover": 5598924.412526998,
+      "insurance_rate": 21.914893617021278,
+      "mobile_money_rate": 72.97872340425532,
+      "tax_compliance_rate": 44.680851063829785
+    }
+  }
+}
