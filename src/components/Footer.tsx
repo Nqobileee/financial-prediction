@@ -11,22 +11,49 @@ export default function Footer() {
           <span className="font-bold">FinHealth</span>
         </Link>
         <div className="flex gap-6">
-          <a className="text-slate-400 hover:text-primary" href="#">
+          <a 
+            className="text-slate-400 hover:text-primary transition-colors" 
+            href="https://github.com/Nqobileee"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="GitHub Profile"
+          >
             <span className="material-symbols-outlined">code</span>
           </a>
-          <a className="text-slate-400 hover:text-primary" href="#">
+          <a 
+            className="text-slate-400 hover:text-primary transition-colors" 
+            href="https://nqobilemportfolio.framer.website/"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Portfolio Website"
+          >
             <span className="material-symbols-outlined">person</span>
           </a>
-          <a className="text-slate-400 hover:text-primary" href="#">
+          <a 
+            className="text-slate-400 hover:text-primary transition-colors" 
+            href="https://www.linkedin.com/in/nqobile-muyambiri-423522236?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="LinkedIn Profile"
+          >
             <span className="material-symbols-outlined">link</span>
           </a>
-          <a className="text-slate-400 hover:text-primary" href="#">
+          <a 
+            className="text-slate-400 hover:text-primary transition-colors" 
+            href="mailto:nqobilemuyambiri@gmail.com"
+            title="Send Email"
+          >
             <span className="material-symbols-outlined">mail</span>
           </a>
         </div>
-        <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">
-          © 2024 FinHealth Africa. Data Driven.
-        </p>
+        <div className="text-center space-y-2">
+          <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">
+            © 2026 FinHealth Africa. Data Driven.
+          </p>
+          <p className="text-[9px] text-slate-500">
+            Developed by <a href="https://nqobilemportfolio.framer.website/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Nqobile Muyambiri</a>
+          </p>
+        </div>
       </div>
     </footer>
   );
