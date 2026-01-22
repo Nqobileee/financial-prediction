@@ -192,6 +192,42 @@ Southern African SME Risk Assessment Study
 Dataset: 9,618 businesses across Eswatini, Zimbabwe, Malawi, Lesotho
 ```
 
+## 🙏 **Acknowledgements & Credits**
+
+### **Data & Research Foundation**
+- **Zindi Africa** for hosting the competition and providing access to this invaluable dataset
+- **Competition Organizers** who meticulously curated 9,618 SME business records
+- **SME Business Owners** across Eswatini, Zimbabwe, Malawi, and Lesotho who participated in the original survey
+- **Creative Commons Community** for enabling open data sharing through CC BY-SA 4.0 licensing
+
+### **Technical Infrastructure**
+- **Scikit-learn** for robust machine learning framework enabling 85% model accuracy
+- **pandas & NumPy** for efficient data processing and statistical analysis
+- **Next.js & React** for modern, responsive frontend development
+- **Flask** for reliable API backend architecture
+- **Tailwind CSS** for elegant, professional UI design
+
+### **Development & Innovation**
+- **Open Source Community** for collaborative tools and libraries
+- **Southern African Tech Ecosystem** for inspiring fintech innovation
+- **Academic Researchers** who pioneered SME financial health assessment methodologies
+- **Financial Inclusion Advocates** working to bridge the 97% insurance gap in SME markets
+
+### **Impact Partners**
+- **SME Development Organizations** supporting small business growth across Africa
+- **Insurance Companies** pioneering data-driven risk assessment in emerging markets
+- **Policymakers** using evidence-based insights for economic development
+- **Financial Technology Innovators** building solutions for underserved markets
+
+### **Special Recognition**
+This project stands on the shoulders of countless individuals committed to:
+- **Financial Inclusion**: Making financial services accessible to all SMEs
+- **Data Transparency**: Sharing knowledge through open datasets and research
+- **Economic Development**: Supporting small business growth in Southern Africa
+- **Technological Innovation**: Leveraging AI/ML for social and economic impact
+
+*"Empowering SMEs through data-driven insights represents a collective effort of researchers, developers, business owners, and organizations committed to transforming financial inclusion across Southern Africa."*
+
 ---
 
 *Transforming SME financial health assessment from guesswork to evidence-based insights, one prediction at a time.*

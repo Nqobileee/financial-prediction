@@ -425,6 +425,38 @@ export default function Home() {
           </div>
         </div>
         
+        {/* Acknowledgement Section */}
+        <div className="bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-800 dark:to-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-700">
+          <div className="text-center space-y-4">
+            <div className="flex items-center justify-center gap-2">
+              <span className="material-symbols-outlined text-primary">favorite</span>
+              <h3 className="font-bold text-lg">Powered by Community & Innovation</h3>
+            </div>
+            <div className="grid md:grid-cols-2 gap-4 text-sm">
+              <div className="space-y-2">
+                <p className="font-semibold text-slate-700 dark:text-slate-300">Data & Research</p>
+                <p className="text-slate-600 dark:text-slate-400">
+                  <span className="text-primary font-medium">Zindi Africa</span> competition dataset • 
+                  <span className="text-primary font-medium">9,618 SMEs</span> across 4 countries • 
+                  <span className="text-primary font-medium">CC BY-SA 4.0</span> open licensing
+                </p>
+              </div>
+              <div className="space-y-2">
+                <p className="font-semibold text-slate-700 dark:text-slate-300">Technical Foundation</p>
+                <p className="text-slate-600 dark:text-slate-400">
+                  <span className="text-primary font-medium">Scikit-learn ML</span> • 
+                  <span className="text-primary font-medium">Next.js/React</span> • 
+                  <span className="text-primary font-medium">Flask API</span> • 
+                  Open Source Community
+                </p>
+              </div>
+            </div>
+            <p className="text-xs text-slate-500 italic">
+              "Transforming SME financial assessment through collaborative innovation and open data science."
+            </p>
+          </div>
+        </div>
+        
         <div className="flex flex-col gap-3">
           <Link
             href="/results"
