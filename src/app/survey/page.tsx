@@ -4,15 +4,88 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
+interface SurveyData {
+  country: string;
+  owner_age: number;
+  owner_sex: string;
+  business_age_years: number;
+  business_age_months: number;
+  covid_essential_service: string;
+  personal_income: number;
+  business_expenses: number;
+  business_turnover: number;
+  keeps_financial_records: string;
+  has_mobile_money: string;
+  has_insurance: string;
+  future_risk_theft_stock: string;
+  attitude_stable_business_environment: string;
+  compliance_income_tax: string;
+  has_cellphone: string;
+  motivation_make_more_money: string;
+}
+
 export default function SurveyPage() {
   const router = useRouter();
   const [currentStep] = useState(3);
   const totalSteps = 10;
   const progress = (currentStep / totalSteps) * 100;
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    router.push("/results");
+    setIsSubmitting(true);
+    setError(null);
+
+    try {
+      const form = e.target as HTMLFormElement;
+      const formData = new FormData(form);
+      
+      // Convert FormData to our survey data object
+      const surveyData: SurveyData = {
+        country: formData.get('country') as string,
+        owner_age: parseInt(formData.get('owner_age') as string) || 0,
+        owner_sex: formData.get('owner_sex') as string,
+        business_age_years: parseInt(formData.get('business_age_years') as string) || 0,
+        business_age_months: parseInt(formData.get('business_age_months') as string) || 0,
+        covid_essential_service: formData.get('covid_essential_service') as string,
+        personal_income: parseFloat(formData.get('personal_income') as string) || 0,
+        business_expenses: parseFloat(formData.get('business_expenses') as string) || 0,
+        business_turnover: parseFloat(formData.get('business_turnover') as string) || 0,
+        keeps_financial_records: formData.get('keeps_financial_records') as string,
+        has_mobile_money: formData.get('has_mobile_money') as string,
+        has_insurance: formData.get('has_insurance') as string,
+        future_risk_theft_stock: formData.get('future_risk_theft_stock') as string,
+        attitude_stable_business_environment: formData.get('attitude_stable_business_environment') as string,
+        compliance_income_tax: formData.get('compliance_income_tax') as string,
+        has_cellphone: formData.get('has_cellphone') as string,
+        motivation_make_more_money: formData.get('motivation_make_more_money') as string,
+      };
+
+      // Submit to backend API
+      const response = await fetch('http://localhost:5000/api/predict', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(surveyData),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        // Store results in localStorage for the results page
+        localStorage.setItem('surveyResults', JSON.stringify(result));
+        router.push("/results");
+      } else {
+        setError(result.error || 'Failed to process survey');
+      }
+    } catch (err) {
+      console.error('Error submitting survey:', err);
+      setError('Failed to connect to the prediction service. Please ensure the backend is running.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -276,13 +349,34 @@ export default function SurveyPage() {
             </div>
           </div>
 
+          {/* Error Message */}
+          {error && (
+            <div className="mt-6 p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="material-symbols-outlined text-red-600 text-sm">error</span>
+                <span className="text-xs font-bold uppercase tracking-widest text-red-600">Error</span>
+              </div>
+              <p className="text-sm text-red-600 dark:text-red-400">{error}</p>
+            </div>
+          )}
+
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full bg-primary text-white h-14 rounded-xl font-bold text-lg glow-cyan flex items-center justify-center gap-2 hover:bg-primary/90 transition-colors mt-8"
+            disabled={isSubmitting}
+            className="w-full bg-primary text-white h-14 rounded-xl font-bold text-lg glow-cyan flex items-center justify-center gap-2 hover:bg-primary/90 transition-colors mt-8 disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            Submit Survey
-            <span className="material-symbols-outlined">send</span>
+            {isSubmitting ? (
+              <>
+                <div className="animate-spin rounded-full h-5 w-5 border-2 border-white border-t-transparent"></div>
+                Processing Survey...
+              </>
+            ) : (
+              <>
+                Submit Survey
+                <span className="material-symbols-outlined">send</span>
+              </>
+            )}
           </button>
         </form>
       </main>
