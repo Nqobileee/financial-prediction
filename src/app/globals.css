@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.neo-blur {
+  backdrop-filter: blur(12px);
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.dark .neo-blur {
+  background-color: rgba(11, 13, 14, 0.8);
+}
+
+.glow-cyan {
+  box-shadow: 0 0 15px rgba(17, 164, 212, 0.3);
+}
+
+.glow-border {
+  box-shadow: 0 0 8px rgba(0, 191, 255, 0.4);
+}
+
+.glow-border:focus-within {
+  box-shadow: 0 0 12px rgba(0, 191, 255, 0.3);
+  border-color: #00bfff !important;
+}
+
+.glow-text {
+  text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+}
+
+.neon-accent {
+  text-shadow: 0 0 8px rgba(0, 191, 255, 0.5);
+}
+
+.glass-header {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.code-bg {
+  background-image: radial-gradient(#11a4d4 0.5px, transparent 0.5px);
+  background-size: 20px 20px;
+}
+
+body {
+  min-height: max(884px, 100dvh);
+}

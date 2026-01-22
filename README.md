@@ -1,111 +1,84 @@
-# FinHealth: Financial Prediction for African SMEs
+# FinHealth - Next.js App
 
-![Status](https://img.shields.io/badge/Status-Live-success)
-![Platform](https://img.shields.io/badge/Platform-Web-blue)
-![Target](https://img.shields.io/badge/Target-African%20SMEs-orange)
+A financial health prediction platform for African SMEs, built with Next.js 14, TypeScript, and Tailwind CSS.
 
-**FinHealth** is an AI-driven platform that assesses the financial health and risk of Small and Medium Enterprises (SMEs) across Africa. Using survey-based data and machine learning models, it predicts business stability and creditworthiness to assist insurers, lenders, and policymakers in decision-making.  
+## Features
 
-🔗 **Live Demo:** [https://financial-prediction.vercel.app/](https://financial-prediction.vercel.app/)
+- **Home Page** - Landing page with model performance metrics and insights
+- **Survey Page** - Comprehensive financial health questionnaire
+- **Results Page** - Visualized survey results with radar charts and recommendations
+- **Reports Page** - Gallery of financial insights and trends
 
----
+## Getting Started
 
-## 🚀 Overview
+### Prerequisites
 
-Many African SMEs operate in the informal economy, making traditional credit assessment difficult. **FinHealth** bridges this gap by leveraging alternative data points—from operational habits to psychometric indicators—to categorize businesses into **Low, Medium, or High Risk**.
+- Node.js 18.17 or later
+- npm, yarn, or pnpm
 
-Key outputs include:  
-* **Risk Status:** Business classification (e.g., Stable, At Risk)  
-* **Health Score:** Quantitative indicator of financial robustness  
+### Installation
 
----
+1. Navigate to the Next.js app directory:
+   ```bash
+   cd nextjs-app
+   ```
 
-## 📋 Survey & Data
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-The platform’s predictive model is trained on SMEs from **Eswatini, Lesotho, Malawi, and Zimbabwe**. Data is collected via a comprehensive survey across five domains:
+3. Run the development server:
+   ```bash
+   npm run dev
+   ```
 
-### 1️⃣ Demographics & Profile
-* **Location:** Country of operation  
-* **Owner Details:** Age, Gender  
-* **Business Maturity:** Years in operation, COVID-19 essential service status  
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-### 2️⃣ Financial Metrics
-* **Cash Flow:** Income, turnover, expenses  
-* **Banking:** Mobile money, bank accounts, loans, cards  
-* **Record Keeping:** Financial documentation frequency  
+## Project Structure
 
-### 3️⃣ Risk & Insurance
-* **Insurance Uptake:** Motor, medical, funeral, business  
-* **Perception:** Trust and affordability of insurance  
-* **Security:** Risk assessments (e.g., theft of stock)  
-
-### 4️⃣ Psychometrics & Attitude
-* **Outlook:** Confidence in business environment  
-* **Compliance:** Attitude toward tax obligations  
-* **Satisfaction:** Current business achievement  
-
-### 5️⃣ Operational Habits
-* **Technology:** Mobile usage, online banking  
-* **Credit Practices:** Offering credit to customers  
-* **Funding Sources:** Reliance on informal lenders or savings  
-
----
-
-## 🛠️ Features
-
-* **Interactive Survey:** Dynamic questionnaire for SMEs  
-* **Real-time Predictions:** Instant financial risk classification  
-* **Dashboard Analytics:** Visual insights (debt ratios, growth potential)  
-* **Mobile Responsive:** Accessible on any device  
-
----
-
-## 📂 Project Structure
-
-```bash
-financial-prediction/
-├── data/               # Anonymized datasets for training
-├── models/             # Pickled machine learning models
-├── src/                # Application source code
-├── static/             # Assets: CSS, images, JS
-├── templates/          # HTML templates for survey & dashboard
-├── requirements.txt    # Python dependencies
-└── README.md           # Project documentation
-````
-
----
-
-## 🔧 Installation & Local Setup
-
-1. **Clone the repository**
-
-```bash
-git clone https://github.com/yourusername/financial-prediction.git
-cd financial-prediction
+```
+nextjs-app/
+├── src/
+│   ├── app/
+│   │   ├── layout.tsx          # Root layout with Navbar & Footer
+│   │   ├── page.tsx            # Home page
+│   │   ├── globals.css         # Global styles
+│   │   ├── survey/
+│   │   │   ├── layout.tsx      # Survey-specific layout
+│   │   │   └── page.tsx        # Survey form
+│   │   ├── results/
+│   │   │   └── page.tsx        # Results display
+│   │   └── reports/
+│   │       └── page.tsx        # Reports gallery
+│   └── components/
+│       ├── Navbar.tsx          # Navigation component
+│       └── Footer.tsx          # Footer component
+├── tailwind.config.ts          # Tailwind configuration
+├── package.json
+└── tsconfig.json
 ```
 
-2. **Install dependencies**
+## Navigation
 
-```bash
-pip install -r requirements.txt
-```
+All pages are linked together:
+- **Logo/FinHealth** → Home (`/`)
+- **Reports** (nav link) → Reports (`/reports`)
+- **Take Survey** (button) → Survey (`/survey`)
+- Survey submission → Results (`/results`)
+- Results "Full Report" → Reports (`/reports`)
 
-3. **Run the application**
+## Tech Stack
 
-```bash
-python app.py
-```
+- **Framework**: Next.js 14 (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Font**: Space Grotesk
+- **Icons**: Material Symbols Outlined
 
-4. **Open in browser**
-   Visit [http://127.0.0.1:5000](http://127.0.0.1:5000)
+## Scripts
 
----
-
-## 🤝 Contributing
-
-Contributions are welcome! Submit a Pull Request with improvements or bug fixes.
-
----
-
-
-*Built with ❤️ to empower African SMEs.*
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
