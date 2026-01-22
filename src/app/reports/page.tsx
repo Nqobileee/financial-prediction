@@ -354,35 +354,3 @@ export default function ReportsPage() {
     </main>
   );
 }
-            className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl shadow p-4 flex flex-col items-center hover:shadow-lg transition-shadow"
-          >
-            <div className="relative w-full h-48 mb-3 rounded-lg overflow-hidden">
-              <Image
-                src={report.image}
-                alt={report.title}
-                fill
-                className="object-cover"
-                unoptimized
-              />
-            </div>
-            <h3 className="font-bold text-lg mb-1">{report.title}</h3>
-            <p className="text-sm text-slate-500 text-center">{report.description}</p>
-          </div>
-        ))}
-      </div>
-
-      {/* CTA Section */}
-      <div className="mt-12 text-center space-y-4">
-        <h2 className="text-2xl font-bold">Want personalized insights?</h2>
-        <p className="text-slate-500">Take our financial health survey to get a customized report for your business.</p>
-        <Link
-          href="/survey"
-          className="inline-flex items-center gap-2 bg-primary text-white px-8 py-4 rounded-xl font-bold hover:bg-primary/90 transition-colors"
-        >
-          <span className="material-symbols-outlined">description</span>
-          Take Survey Now
-        </Link>
-      </div>
-    </main>
-  );
-}
