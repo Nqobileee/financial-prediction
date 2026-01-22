@@ -49,14 +49,14 @@ This project uses data from a Zindi Africa competition focusing on Small and Med
 - **Data License**: [Creative Commons Attribution–ShareAlike 4.0 (CC BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/)
 - **Competition Rules**: [Zindi Competition Rules](https://zindi.africa/rules)
 
-**✅ Compliance Measures:**
-- ✅ Data source properly credited with required attribution
-- ✅ License terms followed and linked as required by CC BY-SA 4.0
-- ✅ Original training data removed to prevent redistribution during active competition
-- ✅ Synthetic dummy data generated for development purposes
-- ✅ Pre-trained model ensures functionality while maintaining legal compliance
+**Compliance Measures:**
+- Data source properly credited with required attribution
+- License terms followed and linked as required by CC BY-SA 4.0
+- Original training data removed to prevent redistribution during active competition
+- Synthetic dummy data generated for development purposes
+- Pre-trained model ensures functionality while maintaining legal compliance
 
-**🙏 Acknowledgments:**
+**Acknowledgments:**
 - **Zindi Africa**: For hosting the competition and providing access to this valuable dataset
 - **Competition Organizers**: For creating and curating this comprehensive SME financial health dataset
 - **Data Contributors**: Who enabled this research through the generous CC BY-SA 4.0 licensing
@@ -99,26 +99,26 @@ This study represents the most comprehensive SME financial health analysis in So
 
 ### **Key Application Features**
 
-1. **📋 Comprehensive Survey** 
+1. **Comprehensive Survey** 
    - 16 questions across 5 categories (demographics, financial, insurance, attitudes, operations)
    - Aligned with actual dataset variables for accurate predictions
 
-2. **🤖 AI-Powered Assessment**
+2. **AI-Powered Assessment**
    - Random Forest model trained on 9,618 real business records
    - Real-time financial health categorization (Low/Medium/High risk)
    - Confidence scoring for prediction reliability
 
-3. **📈 Data-Driven Insights**
+3. **Data-Driven Insights**
    - Interactive charts showing regional business health trends
    - Comparative analysis across countries and risk categories
    - Success factor identification for business improvement
 
-4. **💼 Business Intelligence**
+4. **Business Intelligence**
    - Risk assessment automation for insurers
    - Portfolio management tools for financial institutions
    - Policy guidance based on real market data
 
-## 🛠 **Getting Started**
+## **Getting Started**
 
 ### **Prerequisites**
 - Node.js 18.17 or later
