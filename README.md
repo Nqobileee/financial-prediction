@@ -40,7 +40,29 @@ Small and Medium Enterprises (SMEs) form the backbone of Southern African econom
 - **Economic Planning**: Understanding the 65.3% high-risk business landscape for strategic planning
 - **Financial Inclusion**: Building on 50.7% mobile money adoption for broader financial services
 
-## 📊 **Research Impact & Scope**
+## � Data Attribution & Licensing
+
+### 🏛️ **Dataset Source & Rights**
+This project uses data from a Zindi Africa competition focusing on Small and Medium Enterprises (SMEs) financial health prediction across Southern African countries.
+
+**📋 Licensing & Compliance:**
+- **Data License**: [Creative Commons Attribution–ShareAlike 4.0 (CC BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/)
+- **Competition Rules**: [Zindi Competition Rules](https://zindi.africa/rules)
+
+**✅ Compliance Measures:**
+- ✅ Data source properly credited with required attribution
+- ✅ License terms followed and linked as required by CC BY-SA 4.0
+- ✅ Original training data removed to prevent redistribution during active competition
+- ✅ Synthetic dummy data generated for development purposes
+- ✅ Pre-trained model ensures functionality while maintaining legal compliance
+
+**🙏 Acknowledgments:**
+- **Zindi Africa**: For hosting the competition and providing access to this valuable dataset
+- **Competition Organizers**: For creating and curating this comprehensive SME financial health dataset
+- **Data Contributors**: Who enabled this research through the generous CC BY-SA 4.0 licensing
+- **SME Business Owners**: Who participated in the original data collection across 4 countries
+
+## �📊 **Research Impact & Scope**
 
 This study represents the most comprehensive SME financial health analysis in Southern Africa:
 

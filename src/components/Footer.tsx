@@ -51,6 +51,10 @@ export default function Footer() {
             © 2026 FinHealth Africa. Data Driven.
           </p>
           <p className="text-[9px] text-slate-500">
+            Data licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 transition-colors underline">CC BY-SA 4.0</a> • 
+            <a href="https://zindi.africa/rules" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 transition-colors underline">Zindi Rules</a> Compliant
+          </p>
+          <p className="text-[9px] text-slate-500">
             Developed by <a href="https://nqobilemportfolio.framer.website/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Nqobile Muyambiri</a>
           </p>
         </div>

@@ -1,0 +1,36 @@
+{
+  "feature_columns": [
+    "country",
+    "owner_age",
+    "owner_sex",
+    "business_age_years",
+    "covid_essential_service",
+    "personal_income",
+    "business_expenses",
+    "business_turnover",
+    "keeps_financial_records",
+    "has_mobile_money",
+    "has_insurance",
+    "compliance_income_tax",
+    "has_cellphone",
+    "attitude_stable_business_environment",
+    "future_risk_theft_stock"
+  ],
+  "categorical_columns": [
+    "country",
+    "owner_sex",
+    "covid_essential_service",
+    "keeps_financial_records",
+    "has_mobile_money",
+    "has_insurance",
+    "compliance_income_tax",
+    "has_cellphone",
+    "attitude_stable_business_environment",
+    "future_risk_theft_stock"
+  ],
+  "target_classes": [
+    "High",
+    "Low",
+    "Medium"
+  ]
+}
