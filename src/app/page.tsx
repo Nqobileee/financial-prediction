@@ -20,17 +20,17 @@ export default function Home() {
             {/* Dashboard Preview (Mini-Bento) */}
             <div className="grid grid-cols-2 gap-3 py-4">
               <div className="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
-                <p className="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-1">Health Score</p>
+                <p className="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-1">High Health Rate</p>
                 <div className="flex items-end gap-1">
-                  <span className="text-2xl font-bold">84</span>
-                  <span className="text-accent-green text-xs font-bold mb-1 flex items-center">
-                    <span className="material-symbols-outlined text-xs">arrow_upward</span>5%
+                  <span className="text-2xl font-bold">4.9</span>
+                  <span className="text-yellow-600 text-xs font-bold mb-1 flex items-center">
+                    <span className="material-symbols-outlined text-xs">trending_flat</span>%
                   </span>
                 </div>
               </div>
               <div className="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
-                <p className="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-1">Risk Status</p>
-                <span className="inline-block px-2 py-0.5 rounded bg-accent-green/20 text-accent-green text-[10px] font-bold">STABLE</span>
+                <p className="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-1">Businesses Analyzed</p>
+                <span className="text-2xl font-bold text-primary">9.6K</span>
               </div>
             </div>
             <Link
@@ -51,48 +51,58 @@ export default function Home() {
           <p className="text-sm text-slate-500">Live accuracy metrics &amp; predictive modeling</p>
         </div>
         {/* Stats Components */}
-        <div className="flex flex-wrap gap-4 px-4">
-          <div className="flex flex-1 flex-col gap-2 rounded-2xl p-5 bg-primary/5 border border-primary/10">
+        <div className="grid grid-cols-3 gap-4 px-4">
+          <div className="flex flex-col gap-2 rounded-2xl p-5 bg-primary/5 border border-primary/10">
             <p className="text-slate-500 text-xs font-bold uppercase tracking-widest">Model Accuracy</p>
-            <div className="flex items-center gap-3">
-              <p className="text-primary tracking-tighter text-3xl font-bold leading-tight">87%</p>
-              <span className="text-accent-green text-sm font-bold bg-accent-green/10 px-2 py-1 rounded">+12%</span>
+            <div className="flex items-center gap-2">
+              <p className="text-primary tracking-tighter text-2xl font-bold leading-tight">85%</p>
+              <span className="material-symbols-outlined text-primary text-sm">verified</span>
             </div>
           </div>
-          <div className="flex flex-1 flex-col gap-2 rounded-2xl p-5 bg-primary/5 border border-primary/10">
-            <p className="text-slate-500 text-xs font-bold uppercase tracking-widest">Latency</p>
-            <div className="flex items-center gap-3">
-              <p className="text-slate-900 dark:text-white tracking-tighter text-3xl font-bold leading-tight">&lt;2s</p>
-              <span className="material-symbols-outlined text-primary">bolt</span>
+          <div className="flex flex-col gap-2 rounded-2xl p-5 bg-green-500/5 border border-green-500/10">
+            <p className="text-slate-500 text-xs font-bold uppercase tracking-widest">Countries</p>
+            <div className="flex items-center gap-2">
+              <p className="text-green-600 tracking-tighter text-2xl font-bold leading-tight">4</p>
+              <span className="material-symbols-outlined text-green-600 text-sm">public</span>
+            </div>
+          </div>
+          <div className="flex flex-col gap-2 rounded-2xl p-5 bg-blue-500/5 border border-blue-500/10">
+            <p className="text-slate-500 text-xs font-bold uppercase tracking-widest">Features</p>
+            <div className="flex items-center gap-2">
+              <p className="text-blue-600 tracking-tighter text-2xl font-bold leading-tight">17</p>
+              <span className="material-symbols-outlined text-blue-600 text-sm">dataset</span>
             </div>
           </div>
         </div>
-        {/* Chart Section */}
+        {/* Risk Distribution Chart */}
         <div className="px-4">
           <div className="bg-slate-900 text-white rounded-3xl p-6 overflow-hidden relative">
             <div className="absolute top-0 right-0 p-4 opacity-10">
-              <span className="material-symbols-outlined text-[120px]">query_stats</span>
+              <span className="material-symbols-outlined text-[120px]">assessment</span>
             </div>
             <div className="relative z-10 flex flex-col gap-2">
-              <p className="text-slate-400 text-xs font-bold uppercase tracking-widest">Predictive Power</p>
-              <h3 className="text-3xl font-bold">0.92 AUC</h3>
-              <p className="text-primary text-sm font-medium">Model Precision Trend (12M)</p>
-              <div className="mt-6 flex h-[120px] items-end gap-1">
-                <div className="flex-1 bg-primary/30 h-[40%] rounded-t-sm"></div>
-                <div className="flex-1 bg-primary/40 h-[60%] rounded-t-sm"></div>
-                <div className="flex-1 bg-primary/50 h-[50%] rounded-t-sm"></div>
-                <div className="flex-1 bg-primary/60 h-[80%] rounded-t-sm"></div>
-                <div className="flex-1 bg-primary/70 h-[70%] rounded-t-sm"></div>
-                <div className="flex-1 bg-primary h-[90%] rounded-t-sm glow-cyan"></div>
-                <div className="flex-1 bg-primary/60 h-[75%] rounded-t-sm"></div>
-                <div className="flex-1 bg-primary/80 h-[95%] rounded-t-sm glow-cyan"></div>
+              <p className="text-slate-400 text-xs font-bold uppercase tracking-widest">Financial Health Distribution</p>
+              <h3 className="text-3xl font-bold">Risk Categories</h3>
+              <p className="text-primary text-sm font-medium">Across 9,618 SME Businesses</p>
+              <div className="mt-6 flex h-[120px] items-end gap-2">
+                <div className="flex flex-col items-center gap-2">
+                  <div className="bg-red-500 h-[78px] w-12 rounded-t-lg glow-red"></div>
+                  <span className="text-[10px] text-slate-400">HIGH RISK</span>
+                  <span className="text-xs font-bold">65.3%</span>
+                </div>
+                <div className="flex flex-col items-center gap-2">
+                  <div className="bg-yellow-500 h-[36px] w-12 rounded-t-lg"></div>
+                  <span className="text-[10px] text-slate-400">MEDIUM</span>
+                  <span className="text-xs font-bold">29.8%</span>
+                </div>
+                <div className="flex flex-col items-center gap-2">
+                  <div className="bg-green-500 h-[6px] w-12 rounded-t-lg"></div>
+                  <span className="text-[10px] text-slate-400">LOW RISK</span>
+                  <span className="text-xs font-bold">4.9%</span>
+                </div>
               </div>
-              <div className="flex justify-between mt-2 text-[10px] text-slate-500 font-bold">
-                <span>JAN</span>
-                <span>MAR</span>
-                <span>JUN</span>
-                <span>SEP</span>
-                <span>DEC</span>
+              <div className="mt-4 text-xs text-slate-400">
+                Low risk businesses have 5x higher average income ($882K vs $254K)
               </div>
             </div>
           </div>
@@ -102,28 +112,42 @@ export default function Home() {
       {/* Data Insights Section */}
       <section className="bg-card-light dark:bg-card-dark py-12 px-4 space-y-8">
         <div className="text-center space-y-2">
-          <div className="bg-accent-green/20 text-accent-green text-[10px] font-bold px-3 py-1 rounded-full w-fit mx-auto uppercase">Large Scale Validation</div>
-          <h2 className="text-3xl font-bold tracking-tight">Insights from 50k+ SMEs</h2>
-          <p className="text-slate-500 text-sm max-w-xs mx-auto">Deep dive into the financial patterns of African enterprises.</p>
+          <div className="bg-primary/20 text-primary text-[10px] font-bold px-3 py-1 rounded-full w-fit mx-auto uppercase">Real Dataset Analysis</div>
+          <h2 className="text-3xl font-bold tracking-tight">Insights from 9,618 SMEs</h2>
+          <p className="text-slate-500 text-sm max-w-xs mx-auto">Real-world data from Southern African businesses across 4 countries.</p>
         </div>
-        <div className="grid grid-cols-1 gap-4">
-          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 rounded-2xl flex items-start gap-4">
-            <div className="bg-accent-pink/10 p-3 rounded-xl">
-              <span className="material-symbols-outlined text-accent-pink">pie_chart</span>
+        <div className="grid grid-cols-2 gap-4">
+          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 rounded-2xl text-center">
+            <div className="bg-red-500/10 p-3 rounded-xl w-fit mx-auto mb-3">
+              <span className="material-symbols-outlined text-red-500">warning</span>
             </div>
-            <div>
-              <h4 className="font-bold">Debt Ratios</h4>
-              <p className="text-sm text-slate-500">Correlation identified between mobile-ledger usage and lower default rates.</p>
-            </div>
+            <div className="text-2xl font-bold text-red-500 mb-1">65.3%</div>
+            <h4 className="font-bold text-sm">High Risk</h4>
+            <p className="text-xs text-slate-500">Businesses classified as low financial health</p>
           </div>
-          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 rounded-2xl flex items-start gap-4">
-            <div className="bg-accent-green/10 p-3 rounded-xl">
-              <span className="material-symbols-outlined text-accent-green">trending_up</span>
+          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 rounded-2xl text-center">
+            <div className="bg-green-500/10 p-3 rounded-xl w-fit mx-auto mb-3">
+              <span className="material-symbols-outlined text-green-500">payments</span>
             </div>
-            <div>
-              <h4 className="font-bold">Growth Potential</h4>
-              <p className="text-sm text-slate-500">68% of SMEs with structured inventory records showed positive 12-month trajectory.</p>
+            <div className="text-2xl font-bold text-green-500 mb-1">50.7%</div>
+            <h4 className="font-bold text-sm">Mobile Money</h4>
+            <p className="text-xs text-slate-500">Digital payment adoption rate</p>
+          </div>
+          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 rounded-2xl text-center">
+            <div className="bg-blue-500/10 p-3 rounded-xl w-fit mx-auto mb-3">
+              <span className="material-symbols-outlined text-blue-500">receipt_long</span>
             </div>
+            <div className="text-2xl font-bold text-blue-500 mb-1">13%</div>
+            <h4 className="font-bold text-sm">Tax Compliance</h4>
+            <p className="text-xs text-slate-500">Businesses filing income tax</p>
+          </div>
+          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 rounded-2xl text-center">
+            <div className="bg-purple-500/10 p-3 rounded-xl w-fit mx-auto mb-3">
+              <span className="material-symbols-outlined text-purple-500">shield</span>
+            </div>
+            <div className="text-2xl font-bold text-purple-500 mb-1">3%</div>
+            <h4 className="font-bold text-sm">Insurance Coverage</h4>
+            <p className="text-xs text-slate-500">Businesses with active insurance</p>
           </div>
         </div>
         <Link
@@ -175,7 +199,7 @@ export default function Home() {
           >
             Download Full Report
           </Link>
-          <p className="text-xs text-slate-500 font-medium">Join 500+ insurance providers using FinHealth.</p>
+          <p className="text-xs text-slate-500 font-medium">Analysis covers Eswatini, Zimbabwe, Malawi & Lesotho SMEs.</p>
         </div>
       </section>
     </main>
