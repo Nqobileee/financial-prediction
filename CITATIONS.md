@@ -15,7 +15,7 @@
 
 ### **Licensing Requirements**
 
-#### 1️⃣ **Creative Commons Attribution–ShareAlike 4.0 (CC BY-SA 4.0)**
+#### **Creative Commons Attribution–ShareAlike 4.0 (CC BY-SA 4.0)**
 - **License URL**: https://creativecommons.org/licenses/by-sa/4.0/
 - **Summary**: Free to use, share, and adapt with attribution and share-alike requirements
 - **Requirements**:
@@ -24,7 +24,7 @@
   - **License Link**: Must link to license terms (completed)
   - **Indicate Changes**: Must note if material was modified (completed via synthetic data generation)
 
-#### 2️⃣ **Zindi Competition Rules**
+#### **Zindi Competition Rules**
 - **Rules URL**: https://zindi.africa/rules
 - **Key Compliance Points**:
   - **No Redistribution**: Cannot redistribute train/test datasets during active competition
