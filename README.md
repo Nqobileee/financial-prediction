@@ -4,7 +4,7 @@
 
 ![Financial Health Dashboard](https://img.shields.io/badge/SMEs_Analyzed-9,618-brightgreen) ![Countries Covered](https://img.shields.io/badge/Countries-4-blue) ![Model Accuracy](https://img.shields.io/badge/Model_Accuracy-85%25-orange) ![Coverage](https://img.shields.io/badge/Insurance_Coverage-3%25-red)
 
-## 🌍 **The Critical Challenge**
+## The Critical Challenge
 
 Small and Medium Enterprises (SMEs) form the backbone of Southern African economies, yet **65.3% of businesses** in our comprehensive study are classified as high financial risk. This represents a massive economic vulnerability affecting millions of entrepreneurs across Eswatini, Zimbabwe, Malawi, and Lesotho.
 
@@ -18,7 +18,7 @@ Small and Medium Enterprises (SMEs) form the backbone of Southern African econom
 | **Digital Payment Success** | 50.7% use mobile money | Strong foundation for financial inclusion |
 | **Income Inequality** | 5x income gap between healthy vs. struggling businesses | Systemic wealth disparity |
 
-## 🎯 **How This Study Transforms SME Support**
+## How This Study Transforms SME Support
 
 ### **For Small & Medium Enterprises:**
 - **Early Warning System**: Identify financial health risks before they become critical
@@ -40,12 +40,12 @@ Small and Medium Enterprises (SMEs) form the backbone of Southern African econom
 - **Economic Planning**: Understanding the 65.3% high-risk business landscape for strategic planning
 - **Financial Inclusion**: Building on 50.7% mobile money adoption for broader financial services
 
-## � Data Attribution & Licensing
+## Data Attribution & Licensing
 
-### 🏛️ **Dataset Source & Rights**
+### Dataset Source & Rights
 This project uses data from a Zindi Africa competition focusing on Small and Medium Enterprises (SMEs) financial health prediction across Southern African countries.
 
-**📋 Licensing & Compliance:**
+**Licensing & Compliance:**
 - **Data License**: [Creative Commons Attribution–ShareAlike 4.0 (CC BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/)
 - **Competition Rules**: [Zindi Competition Rules](https://zindi.africa/rules)
 
@@ -62,15 +62,15 @@ This project uses data from a Zindi Africa competition focusing on Small and Med
 - **Data Contributors**: Who enabled this research through the generous CC BY-SA 4.0 licensing
 - **SME Business Owners**: Who participated in the original data collection across 4 countries
 
-## �📊 **Research Impact & Scope**
+## Research Impact & Scope
 
 This study represents the most comprehensive SME financial health analysis in Southern Africa:
 
-### **Geographic Coverage**
-- 🇸🇿 **Eswatini**: 2,674 businesses (27.8%)
-- 🇿🇼 **Zimbabwe**: 2,612 businesses (27.2%)
-- 🇲🇼 **Malawi**: 2,388 businesses (24.8%)
-- 🇱🇸 **Lesotho**: 1,944 businesses (20.2%)
+### Geographic Coverage
+- **Eswatini**: 2,674 businesses (27.8%)
+- **Zimbabwe**: 2,612 businesses (27.2%)
+- **Malawi**: 2,388 businesses (24.8%)
+- **Lesotho**: 1,944 businesses (20.2%)
 
 ### **Critical Success Factors Identified**
 | Factor | Low Risk Businesses | High Risk Businesses | Impact Factor |
@@ -80,7 +80,7 @@ This study represents the most comprehensive SME financial health analysis in So
 | **Insurance Coverage** | 21.9% | 0% | **Infinite difference** |
 | **Mobile Money Usage** | 73.0% | 46.3% | **1.6x higher** |
 
-## 🚀 **Technology Stack & Features**
+## Technology Stack & Features
 
 ### **Frontend Application**
 - **Framework**: Next.js 14 with TypeScript
@@ -155,7 +155,7 @@ This study represents the most comprehensive SME financial health analysis in So
 - `POST /api/predict` - Submit survey for ML prediction
 - `POST /api/train` - Retrain model with new data
 
-## 📈 **Real-World Impact Potential**
+## Real-World Impact Potential
 
 ### **Economic Development**
 - **SME Survival**: Early intervention for 65.3% of high-risk businesses
@@ -172,7 +172,7 @@ This study represents the most comprehensive SME financial health analysis in So
 - **Regional Cooperation**: Cross-border insights across 4 Southern African countries
 - **Sustainable Development**: Support UN SDG goals for economic growth and financial inclusion
 
-## 🤝 **Contributing to SME Development**
+## Contributing to SME Development
 
 This open-source project welcomes contributions from:
 - **Researchers**: Expand dataset coverage and analytical depth
@@ -192,7 +192,7 @@ Southern African SME Risk Assessment Study
 Dataset: 9,618 businesses across Eswatini, Zimbabwe, Malawi, Lesotho
 ```
 
-## 🙏 **Acknowledgements & Credits**
+## Acknowledgements & Credits
 
 ### **Data & Research Foundation**
 - **Zindi Africa** for hosting the competition and providing access to this invaluable dataset

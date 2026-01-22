@@ -436,18 +436,18 @@ export default function Home() {
               <div className="space-y-2">
                 <p className="font-semibold text-slate-700 dark:text-slate-300">Data & Research</p>
                 <p className="text-slate-600 dark:text-slate-400">
-                  <span className="text-primary font-medium">Zindi Africa</span> competition dataset • 
-                  <span className="text-primary font-medium">9,618 SMEs</span> across 4 countries • 
-                  <span className="text-primary font-medium">CC BY-SA 4.0</span> open licensing
+                  Built on the <span className="text-primary font-medium">Zindi Africa</span> competition dataset, 
+                  analyzing <span className="text-primary font-medium">9,618 SMEs</span> across 4 countries 
+                  under <span className="text-primary font-medium">CC BY-SA 4.0</span> open licensing.
                 </p>
               </div>
               <div className="space-y-2">
                 <p className="font-semibold text-slate-700 dark:text-slate-300">Technical Foundation</p>
                 <p className="text-slate-600 dark:text-slate-400">
-                  <span className="text-primary font-medium">Scikit-learn ML</span> • 
-                  <span className="text-primary font-medium">Next.js/React</span> • 
-                  <span className="text-primary font-medium">Flask API</span> • 
-                  Open Source Community
+                  Powered by <span className="text-primary font-medium">Scikit-learn ML</span> algorithms, 
+                  <span className="text-primary font-medium">Next.js/React</span> frontend, 
+                  <span className="text-primary font-medium">Flask API</span> backend, 
+                  and the broader Open Source Community.
                 </p>
               </div>
             </div>
