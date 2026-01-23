@@ -30,61 +30,21 @@ if os.path.exists(model_path):
         print("Please train the model first by running financial_health_survey_model.py")
 
 @app.route('/')
-def index():
+def root():
     """
-    Main survey page
+    Root endpoint for health checking and basic API info
     """
-    return render_template('survey.html')
-
-@app.route('/api/predict', methods=['POST'])
-def predict():
-    """
-    Handle survey submission and return prediction
-    """
-    try:
-        # Get survey responses from the form
-        survey_data = request.json
-        print(f"Received survey data: {survey_data}")
-        
-        # Validate required fields
-        required_fields = [
-            'country', 'owner_age', 'owner_sex', 'business_age_years', 
-            'business_age_months', 'covid_essential_service', 'personal_income',
-            'business_expenses', 'business_turnover', 'keeps_financial_records',
-            'has_mobile_money', 'has_insurance', 'future_risk_theft_stock',
-            'attitude_stable_business_environment', 'compliance_income_tax',
-            'has_cellphone', 'motivation_make_more_money'
-        ]
-        
-        missing_fields = [field for field in required_fields if field not in survey_data or survey_data[field] is None or survey_data[field] == '']
-        if missing_fields:
-            return jsonify({
-                'success': False,
-                'error': f'Missing required fields: {", ".join(missing_fields)}'
-            }), 400
-        
-        # Make prediction
-        if model.is_trained:
-            result = model.predict_financial_health(survey_data)
-            return jsonify({
-                'success': True,
-                'prediction': result['predicted_category'],
-                'confidence_scores': result['confidence_scores'],
-                'recommendation': result['recommendation'],
-                'survey_data': survey_data
-            })
-        else:
-            return jsonify({
-                'success': False,
-                'error': 'Model not trained. Please train the model first.'
-            }), 500
-    
-    except Exception as e:
-        print(f"Error in prediction: {str(e)}")
-        return jsonify({
-            'success': False,
-            'error': f'Error making prediction: {str(e)}'
-        }), 500
+    return jsonify({
+        'message': 'Financial Health Survey API',
+        'status': 'running',
+        'version': '1.0.0',
+        'endpoints': {
+            'health': '/api/health',
+            'predict': '/api/predict (POST)',
+            'train': '/api/train (POST)'
+        },
+        'model_status': 'trained' if model.is_trained else 'not_trained'
+    })
 
 @app.route('/api/health', methods=['GET'])
 def health_check():
@@ -94,7 +54,9 @@ def health_check():
     return jsonify({
         'success': True,
         'message': 'Financial Health Survey API is running',
-        'model_trained': model.is_trained
+        'status': 'healthy',
+        'model_trained': model.is_trained,
+        'timestamp': pd.Timestamp.now().isoformat()
     })
 
 @app.route('/api/train', methods=['POST'])
@@ -123,4 +85,8 @@ def train_model():
         }), 500
 
 if __name__ == '__main__':
+    # For development
     app.run(debug=True, host='0.0.0.0', port=5000)
+else:
+    # For production (when imported by main.py or gunicorn)
+    pass

@@ -1,0 +1,2 @@
+# Procfile for alternative deployment platforms
+web: gunicorn --bind 0.0.0.0:$PORT main:application
