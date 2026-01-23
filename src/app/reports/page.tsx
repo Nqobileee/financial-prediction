@@ -187,33 +187,33 @@ export default function ReportsPage() {
 
       {/* Class Imbalance Crisis */}
       <div className="mb-6 sm:mb-8">
-        <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-xl p-4 sm:p-6">
-          <div className="flex items-center gap-2 mb-4">
-            <span className="material-symbols-outlined text-red-600 text-lg">error_outline</span>
-            <h2 className="text-lg sm:text-xl font-bold text-red-700 dark:text-red-300">Class Imbalance Crisis</h2>
+        <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-xl p-3 sm:p-4 lg:p-6">
+          <div className="flex items-center gap-2 mb-3 sm:mb-4">
+            <span className="material-symbols-outlined text-red-600 text-base sm:text-lg">error_outline</span>
+            <h2 className="text-base sm:text-lg lg:text-xl font-bold text-red-700 dark:text-red-300">Class Imbalance Crisis</h2>
           </div>
-          <p className="text-sm text-red-600 dark:text-red-400 mb-4">χ² goodness-of-fit: p&lt;0.001</p>
+          <p className="text-xs sm:text-sm text-red-600 dark:text-red-400 mb-3 sm:mb-4">χ² goodness-of-fit: p&lt;0.001</p>
           
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
-            <div className="bg-white dark:bg-red-900/30 border border-red-200 dark:border-red-700 rounded-lg p-3 sm:p-4">
-              <div className="text-red-600 font-bold text-lg sm:text-xl mb-1">High Risk (Class 0)</div>
-              <div className="text-2xl sm:text-3xl font-bold text-red-700 dark:text-red-300 mb-1">65.3%</div>
-              <div className="text-xs sm:text-sm text-red-600 dark:text-red-400">(n=6,280)</div>
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-4">
+            <div className="bg-white dark:bg-red-900/30 border border-red-200 dark:border-red-700 rounded-lg p-3">
+              <div className="text-red-600 font-bold text-sm sm:text-base lg:text-lg mb-1">High Risk (Class 0)</div>
+              <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-red-700 dark:text-red-300 mb-1">65.3%</div>
+              <div className="text-xs text-red-600 dark:text-red-400">(n=6,280)</div>
             </div>
-            <div className="bg-white dark:bg-yellow-900/30 border border-yellow-200 dark:border-yellow-700 rounded-lg p-3 sm:p-4">
-              <div className="text-yellow-600 font-bold text-lg sm:text-xl mb-1">Medium Risk (Class 1)</div>
-              <div className="text-2xl sm:text-3xl font-bold text-yellow-700 dark:text-yellow-300 mb-1">29.8%</div>
-              <div className="text-xs sm:text-sm text-yellow-600 dark:text-yellow-400">(n=2,868)</div>
+            <div className="bg-white dark:bg-yellow-900/30 border border-yellow-200 dark:border-yellow-700 rounded-lg p-3">
+              <div className="text-yellow-600 font-bold text-sm sm:text-base lg:text-lg mb-1">Medium Risk (Class 1)</div>
+              <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-yellow-700 dark:text-yellow-300 mb-1">29.8%</div>
+              <div className="text-xs text-yellow-600 dark:text-yellow-400">(n=2,868)</div>
             </div>
-            <div className="bg-white dark:bg-green-900/30 border border-green-200 dark:border-green-700 rounded-lg p-3 sm:p-4">
-              <div className="text-green-600 font-bold text-lg sm:text-xl mb-1">Low Risk (Class 2)</div>
-              <div className="text-2xl sm:text-3xl font-bold text-green-700 dark:text-green-300 mb-1">4.9%</div>
-              <div className="text-xs sm:text-sm text-green-600 dark:text-green-400">(n=470)</div>
+            <div className="bg-white dark:bg-green-900/30 border border-green-200 dark:border-green-700 rounded-lg p-3">
+              <div className="text-green-600 font-bold text-sm sm:text-base lg:text-lg mb-1">Low Risk (Class 2)</div>
+              <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-green-700 dark:text-green-300 mb-1">4.9%</div>
+              <div className="text-xs text-green-600 dark:text-green-400">(n=470)</div>
             </div>
           </div>
           
-          <div className="mt-4 p-3 bg-slate-100 dark:bg-slate-800 rounded-lg">
-            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-medium">
+          <div className="mt-3 sm:mt-4 p-3 bg-slate-100 dark:bg-slate-800 rounded-lg">
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-medium leading-relaxed">
               <strong>Statistical Implication:</strong> SMOTE resampling required for minority class learning. Stratified k-fold ensures representative validation splits.
             </p>
           </div>
@@ -222,36 +222,36 @@ export default function ReportsPage() {
       
       {/* Correlation Matrix Analysis */}
       <div className="mb-6 sm:mb-8">
-        <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-xl p-4 sm:p-6">
-          <div className="flex items-center gap-2 mb-4">
-            <span className="material-symbols-outlined text-blue-600 text-lg">analytics</span>
-            <h2 className="text-lg sm:text-xl font-bold text-blue-700 dark:text-blue-300">Correlation Matrix Analysis</h2>
+        <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-xl p-3 sm:p-4 lg:p-6">
+          <div className="flex items-center gap-2 mb-3 sm:mb-4">
+            <span className="material-symbols-outlined text-blue-600 text-base sm:text-lg">analytics</span>
+            <h2 className="text-base sm:text-lg lg:text-xl font-bold text-blue-700 dark:text-blue-300">Correlation Matrix Analysis</h2>
           </div>
-          <p className="text-sm text-blue-600 dark:text-blue-400 mb-4">Pearson r, Spearman ρ computed</p>
+          <p className="text-xs sm:text-sm text-blue-600 dark:text-blue-400 mb-3 sm:mb-4">Pearson r, Spearman ρ computed</p>
           
-          <div className="space-y-3">
+          <div className="space-y-2 sm:space-y-3">
             <div className="bg-white dark:bg-blue-900/30 border border-blue-200 dark:border-blue-700 rounded-lg p-3">
-              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
-                <span className="text-sm sm:text-base font-medium text-slate-700 dark:text-slate-300">Income↔Insurance Coverage</span>
-                <span className="text-lg sm:text-xl font-bold text-blue-600 dark:text-blue-400">r = 0.67***</span>
+              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-2">
+                <span className="text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300 leading-tight">Income ↔ Insurance Coverage</span>
+                <span className="text-sm sm:text-base lg:text-lg font-bold text-blue-600 dark:text-blue-400">r = 0.67***</span>
               </div>
             </div>
             <div className="bg-white dark:bg-blue-900/30 border border-blue-200 dark:border-blue-700 rounded-lg p-3">
-              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
-                <span className="text-sm sm:text-base font-medium text-slate-700 dark:text-slate-300">Tax Compliance↔Business Health</span>
-                <span className="text-lg sm:text-xl font-bold text-blue-600 dark:text-blue-400">r = 0.54***</span>
+              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-2">
+                <span className="text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300 leading-tight">Tax Compliance ↔ Business Health</span>
+                <span className="text-sm sm:text-base lg:text-lg font-bold text-blue-600 dark:text-blue-400">r = 0.54***</span>
               </div>
             </div>
             <div className="bg-white dark:bg-blue-900/30 border border-blue-200 dark:border-blue-700 rounded-lg p-3">
-              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
-                <span className="text-sm sm:text-base font-medium text-slate-700 dark:text-slate-300">Mobile Money↔Digital Readiness</span>
-                <span className="text-lg sm:text-xl font-bold text-blue-600 dark:text-blue-400">r = 0.43**</span>
+              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-2">
+                <span className="text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300 leading-tight">Mobile Money ↔ Digital Readiness</span>
+                <span className="text-sm sm:text-base lg:text-lg font-bold text-blue-600 dark:text-blue-400">r = 0.43**</span>
               </div>
             </div>
           </div>
           
-          <div className="mt-4 p-3 bg-slate-100 dark:bg-slate-800 rounded-lg">
-            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400">
+          <div className="mt-3 sm:mt-4 p-3 bg-slate-100 dark:bg-slate-800 rounded-lg">
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
               <strong>*** p&lt;0.001, ** p&lt;0.01.</strong> Bonferroni correction applied for multiple comparisons.
             </p>
           </div>
