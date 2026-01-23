@@ -118,10 +118,12 @@ def predict():
         })
         
     except Exception as e:
-        print(f"Error in prediction: {str(e)}")
+        # Log error details for debugging (avoid exposing in production responses)
+        import logging
+        logging.error(f"Prediction error: {str(e)}")
         return jsonify({
             'success': False,
-            'error': f'Error processing survey: {str(e)}'
+            'error': 'An error occurred while processing your survey. Please try again.'
         }), 500
 
 if __name__ == '__main__':

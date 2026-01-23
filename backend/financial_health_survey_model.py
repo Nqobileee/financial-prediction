@@ -190,9 +190,9 @@ class FinancialHealthSurveyModel:
         X_encoded = X.copy()
         
         for col in X_encoded.columns:
-            # Check if column is categorical (handles both 'object' and 'str' dtypes)
-            is_categorical = (X_encoded[col].dtype == 'object' or 
-                            str(X_encoded[col].dtype) == 'str' or
+            # Check if column is categorical using pandas API for reliable detection
+            is_categorical = (pd.api.types.is_object_dtype(X_encoded[col]) or 
+                            pd.api.types.is_string_dtype(X_encoded[col]) or
                             col in self.label_encoders)
             
             if is_categorical:
@@ -203,23 +203,25 @@ class FinancialHealthSurveyModel:
                 else:
                     if col in self.label_encoders:
                         le = self.label_encoders[col]
+                        # Pre-compute case-insensitive lookup for this encoder
+                        classes_lower = {str(c).lower(): c for c in le.classes_}
+                        classes_set = set(le.classes_)
+                        fallback = 'Unknown' if 'Unknown' in classes_set else le.classes_[0]
+                        
                         # Handle unseen categories with case-insensitive matching
                         X_encoded[col] = X_encoded[col].astype(str)
-                        classes_lower = {str(c).lower(): c for c in le.classes_}
                         
-                        def match_category(x):
+                        def match_category(x, cl=classes_set, cl_lower=classes_lower, fb=fallback):
                             x_str = str(x)
                             # Exact match first
-                            if x_str in le.classes_:
+                            if x_str in cl:
                                 return x_str
                             # Case-insensitive match
                             x_lower = x_str.lower()
-                            if x_lower in classes_lower:
-                                return classes_lower[x_lower]
-                            # Fallback to 'Unknown' if it exists, otherwise first class
-                            if 'Unknown' in le.classes_:
-                                return 'Unknown'
-                            return le.classes_[0]
+                            if x_lower in cl_lower:
+                                return cl_lower[x_lower]
+                            # Fallback value
+                            return fb
                         
                         X_encoded[col] = X_encoded[col].apply(match_category)
                         X_encoded[col] = le.transform(X_encoded[col])
