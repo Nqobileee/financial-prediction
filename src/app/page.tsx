@@ -172,7 +172,7 @@ export default function Home() {
           <div className="bg-primary/20 text-primary text-[10px] font-bold px-3 py-1 rounded-full w-fit mx-auto uppercase">
             Population-Scale Bayesian Inference
           </div>
-          <h2 className="text-3xl font-bold tracking-tight">Systematic Financial Vulnerability Analysis</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">Systematic Financial Vulnerability Analysis</h2>
           <p className="text-slate-500 text-sm max-w-2xl mx-auto leading-relaxed">
             <strong>Hypothesis Testing (α=0.05):</strong> Our null hypothesis that SME financial health distributes normally 
             is rejected (p&lt;0.001, Shapiro-Wilk test). The data reveals <strong>positive skew toward risk</strong>, 
@@ -181,14 +181,14 @@ export default function Home() {
         </div>
         
         {/* Statistical Insights Grid */}
-        <div className="grid grid-cols-2 gap-6">
-          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 rounded-2xl">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-4 sm:p-6 rounded-2xl">
             <div className="flex items-center gap-3 mb-4">
               <div className="bg-red-500/10 p-3 rounded-xl">
                 <span className="material-symbols-outlined text-red-500">error_outline</span>
               </div>
               <div>
-                <h4 className="font-bold text-lg">Class Imbalance Crisis</h4>
+                <h4 className="font-bold text-base sm:text-lg">Class Imbalance Crisis</h4>
                 <p className="text-xs text-slate-500">χ² goodness-of-fit: p&lt;0.001</p>
               </div>
             </div>
@@ -214,20 +214,20 @@ export default function Home() {
             </div>
           </div>
           
-          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 rounded-2xl">
+          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-4 sm:p-6 rounded-2xl">
             <div className="flex items-center gap-3 mb-4">
               <div className="bg-blue-500/10 p-3 rounded-xl">
                 <span className="material-symbols-outlined text-blue-500">analytics</span>
               </div>
               <div>
-                <h4 className="font-bold text-lg">Correlation Matrix Analysis</h4>
+                <h4 className="font-bold text-base sm:text-lg">Correlation Matrix Analysis</h4>
                 <p className="text-xs text-slate-500">Pearson r, Spearman ρ computed</p>
               </div>
             </div>
             <div className="space-y-4">
               <div>
                 <div className="flex justify-between items-center mb-2">
-                  <span className="text-sm font-medium">Income↔Insurance Coverage</span>
+                  <span className="text-sm font-medium">Income - Insurance Coverage</span>
                   <span className="text-blue-500 font-bold">r = 0.67***</span>
                 </div>
                 <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2">
@@ -236,7 +236,7 @@ export default function Home() {
               </div>
               <div>
                 <div className="flex justify-between items-center mb-2">
-                  <span className="text-sm font-medium">Tax Compliance↔Business Health</span>
+                  <span className="text-sm font-medium">Tax Compliance - Business Health</span>
                   <span className="text-green-500 font-bold">r = 0.54***</span>
                 </div>
                 <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2">
@@ -245,7 +245,7 @@ export default function Home() {
               </div>
               <div>
                 <div className="flex justify-between items-center mb-2">
-                  <span className="text-sm font-medium">Mobile Money↔Digital Readiness</span>
+                  <span className="text-sm font-medium">Mobile Money - Digital Readiness</span>
                   <span className="text-purple-500 font-bold">r = 0.43**</span>
                 </div>
                 <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2">
