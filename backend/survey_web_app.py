@@ -14,7 +14,15 @@ import os
 from financial_health_survey_model import FinancialHealthSurveyModel
 
 app = Flask(__name__)
-CORS(app)  # Enable CORS for all domains and routes
+# Enable CORS with explicit configuration for cross-origin POST requests
+CORS(app, resources={
+    r"/api/*": {
+        "origins": "*",
+        "methods": ["GET", "POST", "OPTIONS"],
+        "allow_headers": ["Content-Type", "Authorization", "Accept"],
+        "supports_credentials": False
+    }
+})
 
 # Initialize the model
 model = FinancialHealthSurveyModel()
