@@ -1,33 +1,41 @@
 # FinHealth - Financial Health Prediction for Southern African SMEs
 
-*Empowering Small & Medium Enterprises through AI-driven financial health assessment and risk prediction*
+*A Next.js web application providing AI-driven financial health assessment for Small & Medium Enterprises*
 
-![Financial Health Dashboard](https://img.shields.io/badge/SMEs_Analyzed-9,618-brightgreen) ![Countries Covered](https://img.shields.io/badge/Countries-4-blue) ![Model Accuracy](https://img.shields.io/badge/Model_Accuracy-85%25-orange) ![Coverage](https://img.shields.io/badge/Insurance_Coverage-3%25-red)
+## 🚀 Quick Start
 
-## The Critical Challenge
+```bash
+# Install dependencies
+npm install
 
-Small and Medium Enterprises (SMEs) form the backbone of Southern African economies, yet **65.3% of businesses** in our comprehensive study are classified as high financial risk. This represents a massive economic vulnerability affecting millions of entrepreneurs across Eswatini, Zimbabwe, Malawi, and Lesotho.
+# Start development server
+npm run dev
+```
 
-### **Key Findings from 9,618 Real SME Businesses:**
+Visit [http://localhost:3000](http://localhost:3000) to use the application.
 
-| Critical Gap | Current State | Impact |
-|--------------|---------------|---------|
-| **Financial Health Crisis** | Only 4.9% achieve high financial health | Economic instability for 95.1% of SMEs |
-| **Insurance Protection Gap** | 3% have business insurance | 97% vulnerable to business risks |
-| **Tax Compliance Challenge** | 13% comply with income tax | Lost government revenue & business legitimacy |
-| **Digital Payment Success** | 50.7% use mobile money | Strong foundation for financial inclusion |
-| **Income Inequality** | 5x income gap between healthy vs. struggling businesses | Systemic wealth disparity |
+## 📋 Features
 
-## How This Study Transforms SME Support
+- **Interactive Survey**: Comprehensive financial health questionnaire
+- **Real-time Predictions**: Instant financial health assessment using TypeScript algorithms
+- **Risk Categories**: Classifies businesses as Low, Medium, or High financial health
+- **Personalized Recommendations**: Tailored advice based on survey responses
+- **Confidence Scoring**: Provides prediction confidence levels
 
-### **For Small & Medium Enterprises:**
-- **Early Warning System**: Identify financial health risks before they become critical
-- **Personalized Recommendations**: Data-driven advice tailored to each business's unique situation
-- **Benchmarking**: Compare performance against 9,618+ similar businesses across 4 countries
-- **Growth Pathway**: Clear indicators of success factors (tax compliance, insurance, digital adoption)
-- **Access to Capital**: Improved risk profiles can unlock better financing opportunities
+## 🏗️ Architecture
 
-### **For Insurance Companies & Financial Institutions:**
+This is a **Next.js 15** application with:
+- **Frontend**: React with TypeScript and Tailwind CSS
+- **Backend**: Next.js API Routes (TypeScript)
+- **Predictions**: Built-in financial scoring algorithm
+- **No External Dependencies**: Everything runs in a single Next.js application
+
+## 🎯 Technology Stack
+
+- **Next.js 15** (App Router)
+- **React 18** with TypeScript
+- **Tailwind CSS** for styling
+- **TypeScript** for type safety
 - **Risk Assessment Automation**: ML-powered evaluation replacing manual underwriting processes
 - **Market Opportunity Identification**: 97% of SMEs lack insurance - massive untapped market
 - **Premium Optimization**: Data-driven pricing based on actual risk factors, not assumptions
