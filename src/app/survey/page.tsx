@@ -3,26 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-
-interface SurveyData {
-  country: string;
-  owner_age: number;
-  owner_sex: string;
-  business_age_years: number;
-  business_age_months: number;
-  covid_essential_service: string;
-  personal_income: number;
-  business_expenses: number;
-  business_turnover: number;
-  keeps_financial_records: string;
-  has_mobile_money: string;
-  has_insurance: string;
-  future_risk_theft_stock: string;
-  attitude_stable_business_environment: string;
-  compliance_income_tax: string;
-  has_cellphone: string;
-  motivation_make_more_money: string;
-}
+import { submitSurveyData, type SurveyData } from "@/lib/api";
 
 export default function SurveyPage() {
   const router = useRouter();
@@ -62,16 +43,8 @@ export default function SurveyPage() {
         motivation_make_more_money: formData.get('motivation_make_more_money') as string,
       };
 
-      // Submit to backend API
-      const response = await fetch('http://localhost:5000/api/predict', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(surveyData),
-      });
-
-      const result = await response.json();
+      // Submit to backend API using the utility function
+      const result = await submitSurveyData(surveyData);
 
       if (result.success) {
         // Store results in localStorage for the results page
@@ -82,7 +55,7 @@ export default function SurveyPage() {
       }
     } catch (err) {
       console.error('Error submitting survey:', err);
-      setError('Failed to connect to the prediction service. Please ensure the backend is running.');
+      setError(err instanceof Error ? err.message : 'An unexpected error occurred. Please try again.');
     } finally {
       setIsSubmitting(false);
     }

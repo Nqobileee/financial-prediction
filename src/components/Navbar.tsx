@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import ApiStatus from "./ApiStatus";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -18,6 +19,13 @@ export default function Navbar() {
         
         {/* Desktop Navigation */}
         <div className="hidden sm:flex items-center gap-4">
+          <ApiStatus />
+          <Link
+            href="/api-test"
+            className="text-xs font-medium hover:text-primary transition-colors"
+          >
+            API Test
+          </Link>
           <Link
             href="/reports"
             className="text-sm font-medium hover:text-primary transition-colors"
