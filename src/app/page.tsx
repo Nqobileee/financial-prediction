@@ -227,7 +227,7 @@ export default function Home() {
             <div className="space-y-4">
               <div>
                 <div className="flex justify-between items-center mb-2">
-                  <span className="text-sm font-medium">Income↔Insurance Coverage</span>
+                  <span className="text-sm font-medium">Income - Insurance Coverage</span>
                   <span className="text-blue-500 font-bold">r = 0.67***</span>
                 </div>
                 <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2">
@@ -236,7 +236,7 @@ export default function Home() {
               </div>
               <div>
                 <div className="flex justify-between items-center mb-2">
-                  <span className="text-sm font-medium">Tax Compliance↔Business Health</span>
+                  <span className="text-sm font-medium">Tax Compliance - Business Health</span>
                   <span className="text-green-500 font-bold">r = 0.54***</span>
                 </div>
                 <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2">
@@ -245,7 +245,7 @@ export default function Home() {
               </div>
               <div>
                 <div className="flex justify-between items-center mb-2">
-                  <span className="text-sm font-medium">Mobile Money↔Digital Readiness</span>
+                  <span className="text-sm font-medium">Mobile Money - Digital Readiness</span>
                   <span className="text-purple-500 font-bold">r = 0.43**</span>
                 </div>
                 <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2">
