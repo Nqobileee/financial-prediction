@@ -190,7 +190,12 @@ class FinancialHealthSurveyModel:
         X_encoded = X.copy()
         
         for col in X_encoded.columns:
-            if X_encoded[col].dtype == 'object':
+            # Check if column is categorical (handles both 'object' and 'str' dtypes)
+            is_categorical = (X_encoded[col].dtype == 'object' or 
+                            str(X_encoded[col].dtype) == 'str' or
+                            col in self.label_encoders)
+            
+            if is_categorical:
                 if fit:
                     le = LabelEncoder()
                     X_encoded[col] = le.fit_transform(X_encoded[col].astype(str))
@@ -198,12 +203,25 @@ class FinancialHealthSurveyModel:
                 else:
                     if col in self.label_encoders:
                         le = self.label_encoders[col]
-                        # Handle unseen categories
+                        # Handle unseen categories with case-insensitive matching
                         X_encoded[col] = X_encoded[col].astype(str)
-                        unique_values = set(le.classes_)
-                        X_encoded[col] = X_encoded[col].apply(
-                            lambda x: x if x in unique_values else 'Unknown'
-                        )
+                        classes_lower = {str(c).lower(): c for c in le.classes_}
+                        
+                        def match_category(x):
+                            x_str = str(x)
+                            # Exact match first
+                            if x_str in le.classes_:
+                                return x_str
+                            # Case-insensitive match
+                            x_lower = x_str.lower()
+                            if x_lower in classes_lower:
+                                return classes_lower[x_lower]
+                            # Fallback to 'Unknown' if it exists, otherwise first class
+                            if 'Unknown' in le.classes_:
+                                return 'Unknown'
+                            return le.classes_[0]
+                        
+                        X_encoded[col] = X_encoded[col].apply(match_category)
                         X_encoded[col] = le.transform(X_encoded[col])
                     else:
                         X_encoded[col] = 0  # Default encoding for new columns

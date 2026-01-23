@@ -84,6 +84,46 @@ def train_model():
             'error': f'Error training model: {str(e)}'
         }), 500
 
+@app.route('/api/predict', methods=['POST'])
+def predict():
+    """
+    Process survey data and return financial health prediction
+    """
+    try:
+        # Check if model is trained
+        if not model.is_trained:
+            return jsonify({
+                'success': False,
+                'error': 'Model is not trained. Please train the model first.'
+            }), 503
+
+        # Get survey data from request
+        survey_data = request.get_json()
+        
+        if not survey_data:
+            return jsonify({
+                'success': False,
+                'error': 'No survey data provided'
+            }), 400
+        
+        # Make prediction using the model
+        result = model.predict_financial_health(survey_data)
+        
+        return jsonify({
+            'success': True,
+            'prediction': result['predicted_category'],
+            'confidence_scores': result['confidence_scores'],
+            'recommendation': result['recommendation'],
+            'survey_data': survey_data
+        })
+        
+    except Exception as e:
+        print(f"Error in prediction: {str(e)}")
+        return jsonify({
+            'success': False,
+            'error': f'Error processing survey: {str(e)}'
+        }), 500
+
 if __name__ == '__main__':
     # For development
     app.run(debug=True, host='0.0.0.0', port=5000)
