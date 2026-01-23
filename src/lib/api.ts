@@ -8,8 +8,8 @@ export const getApiUrl = (): string => {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
   
   if (!apiUrl) {
-    console.warn('NEXT_PUBLIC_API_URL not set, falling back to localhost');
-    return 'http://localhost:5000';
+    console.warn('NEXT_PUBLIC_API_URL not set, using relative paths for Next.js API routes');
+    return ''; // Use relative paths for Next.js API routes
   }
   
   return apiUrl;
@@ -19,7 +19,6 @@ export const getApiUrl = (): string => {
 export const API_ENDPOINTS = {
   health: '/api/health',
   predict: '/api/predict',
-  train: '/api/train',
 } as const;
 
 /**
