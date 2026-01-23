@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ApiStatus from "./ApiStatus";
 
 export default function Footer() {
   return (
@@ -50,6 +51,16 @@ export default function Footer() {
           <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">
             © 2026 FinHealth Africa. Data Driven.
           </p>
+          <div className="flex justify-center items-center gap-2">
+            <ApiStatus />
+            <span className="text-[9px] text-slate-500">•</span>
+            <Link
+              href="/api-test"
+              className="text-[9px] text-slate-500 hover:text-primary transition-colors underline"
+            >
+              API Test
+            </Link>
+          </div>
           <p className="text-[9px] text-slate-500">
             Data licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 transition-colors underline">CC BY-SA 4.0</a> • 
             <a href="https://zindi.africa/rules" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 transition-colors underline">Zindi Rules</a> Compliant
