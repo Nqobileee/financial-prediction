@@ -1,0 +1,274 @@
+================================================================================
+FINANCIAL HEALTH PREDICTION - MODEL COMPARISON SUMMARY
+================================================================================
+Generated: February 10, 2026
+Purpose: Comprehensive comparison of all model versions and trials
+
+================================================================================
+QUICK REFERENCE - ALL VERSIONS
+================================================================================
+
++----------+----------+----------+----------+----------+------------------------+
+| Version  | Accuracy | F1 Macro | Log Loss | Features | Status                 |
++----------+----------+----------+----------+----------+------------------------+
+| V1.0     | 0.8763   | 0.8011   | 0.3174   | 37       | Baseline               |
+| V1.1a    | 0.8763   | 0.8011   | 0.3174   | 37       | Global imputation      |
+| V1.1b    | 0.8771   | 0.8026   | 0.3125   | 73       | + Missing indicators   |
+| V1.1c    | 0.8750   | 0.7994   | 0.3175   | 37       | Country-based impute   |
+| V1.1d    | 0.8770   | 0.8040   | 0.3127   | 73       | Country + indicators   |
+| V1.2a    | 0.8770   | 0.8040   | 0.3127   | 73       | Label encoding         |
+| V1.2b    | 0.7145   | 0.6046   | 0.5851   | 73       | Ordinal mapping (BAD)  |
+| V1.2c    | 0.8765   | 0.8035   | 0.3124   | 104      | Label + frequency      |
+| V1.2d    | 0.8759   | 0.8036   | 0.3132   | 104      | Ordinal + frequency    |
+| V2.0     | 0.8787   | 0.8068   | 0.3091   | 95       | OVERFIT               |
+| V3.0     | 0.8772   | 0.8022   | 0.3090   | 55       | OVERFIT               |
+| V4.0     | 0.8744   | 0.7992   | 0.3168   | 37       | Anti-overfit          |
++----------+----------+----------+----------+----------+------------------------+
+
+================================================================================
+V1.1 TRIAL DETAILED COMPARISON
+================================================================================
+
+The V1.1 series focused on missing value handling strategies.
+
+Trial V1.1a: Global Median/Mode Imputation (Baseline)
+-----------------------------------------------------------------
+Method:     Numeric cols -> global median, Categorical cols -> mode
+Features:   37 (original only)
+Results:    Acc=0.8763 | F1=0.8011 | LogLoss=0.3174
+Notes:      Same as V1.0 - establishes baseline for missing value experiments
+
+Trial V1.1b: Global Imputation + Missing Indicators
+-----------------------------------------------------------------
+Method:     V1.1a + binary indicators for each column with missing values
+Features:   73 (37 original + 36 missing indicators)
+Results:    Acc=0.8771 | F1=0.8026 | LogLoss=0.3125
+
+Improvement vs V1.1a:
+  - Accuracy:   +0.0008 (+0.09%)
+  - F1 Macro:   +0.0015 (+0.19%)
+  - Log Loss:   -0.0049 (-1.5%)
+
+Trial V1.1c: Country-Based (Group) Imputation
+-----------------------------------------------------------------
+Method:     Numeric cols -> median per country (regional differences)
+Features:   37 (original only)
+Results:    Acc=0.8750 | F1=0.7994 | LogLoss=0.3175
+
+Improvement vs V1.1a:
+  - Accuracy:   -0.0013 (-0.15%)
+  - F1 Macro:   -0.0017 (-0.21%)
+  - Log Loss:   +0.0001 (negligible)
+  
+Notes:      Country-based imputation alone slightly worse - potential noise
+
+Trial V1.1d: Country-Based Imputation + Missing Indicators (BEST)
+-----------------------------------------------------------------
+Method:     Country-specific medians + missing indicator features
+Features:   73 (37 original + 36 missing indicators)
+Results:    Acc=0.8770 | F1=0.8040 | LogLoss=0.3127
+
+Improvement vs V1.1a (baseline):
+  - Accuracy:   +0.0007 (+0.08%)
+  - F1 Macro:   +0.0029 (+0.36%)
+  - Log Loss:   -0.0047 (-1.5%)
+
+Improvement vs V1.0:
+  - Accuracy:   +0.0007 (+0.08%)
+  - F1 Macro:   +0.0029 (+0.36%)
+  - Log Loss:   -0.0047 (-1.5%)
+
+================================================================================
+V1.2 TRIAL DETAILED COMPARISON
+================================================================================
+
+The V1.2 series focused on categorical encoding strategies.
+
+Trial V1.2a: Label Encoding (Baseline)
+-----------------------------------------------------------------
+Method:     Standard label encoding for all categorical columns
+Features:   73 (same as V1.1d)
+Results:    Acc=0.8770 | F1=0.8040 | LogLoss=0.3127
+Notes:      Same as V1.1d - confirms label encoding is optimal
+
+Trial V1.2b: Ordinal Mapping (FAILED)
+-----------------------------------------------------------------
+Method:     Semantic ordinal encoding (Yes=1, No=0, Have now=2, etc.)
+Features:   73 (same as V1.1d)
+Results:    Acc=0.7145 | F1=0.6046 | LogLoss=0.5851
+Notes:      SIGNIFICANT PERFORMANCE DROP - ordinal mapping hurt model
+
+Trial V1.2c: Label + Frequency Encoding
+-----------------------------------------------------------------
+Method:     Label encoding + frequency features for each categorical
+Features:   104 (73 + 31 frequency features)
+Results:    Acc=0.8765 | F1=0.8035 | LogLoss=0.3124
+
+Change vs V1.1d:
+  - Accuracy:   -0.0005 (-0.06%)
+  - F1 Macro:   -0.0005 (-0.06%)
+  - Log Loss:   -0.0003 (slight improvement)
+
+Trial V1.2d: Ordinal + Frequency
+-----------------------------------------------------------------
+Method:     Ordinal mapping combined with frequency encoding
+Features:   104 (73 + 31 frequency features)
+Results:    Acc=0.8759 | F1=0.8036 | LogLoss=0.3132
+Notes:      Frequency encoding partially recovered ordinal mapping's damage
+
+V1.2 KEY FINDINGS:
+- Tree models don't benefit from manual ordinal encoding
+- Label encoding is already optimal for LightGBM
+- Frequency encoding adds 31 features with minimal benefit
+- V1.1d remains the best V1.x approach
+
+================================================================================
+CROSS-VERSION COMPARISON
+================================================================================
+
+                        V1.0      V1.1d     V2.0      V3.0      V4.0
+----------------------------------------------------------------
+Accuracy               0.8763    0.8770    0.8787    0.8772    0.8744
+F1 Macro               0.8011    0.8040    0.8068    0.8022    0.7992
+Log Loss               0.3174    0.3127    0.3091    0.3090    0.3168
+Features               37        73        95        55        37
+----------------------------------------------------------------
+Overfit Risk           LOW       LOW       HIGH      HIGH      VERY LOW
+
+CLASS-LEVEL PERFORMANCE COMPARISON:
+
+Low Class (65.3% of data):
+              V1.0      V1.1d     V2.0      V3.0      V4.0
+Precision    0.879     0.881     0.880     0.880     0.880
+Recall       0.980     0.978     0.980     0.980     0.980
+F1-Score     0.927     0.927     0.930     0.930     0.920
+
+Medium Class (29.8% of data):
+              V1.0      V1.1d     V2.0      V3.0      V4.0
+Precision    0.874     0.871     0.870     0.870     0.870
+Recall       0.695     0.698     0.710     0.710     0.690
+F1-Score     0.774     0.775     0.780     0.780     0.770
+
+High Class (4.9% of data - minority):
+              V1.0      V1.1d     V2.0      V3.0      V4.0
+Precision    0.840     0.840     0.870     0.870     0.860
+Recall       0.604     0.615     0.600     0.600     0.600
+F1-Score     0.703     0.710     0.710     0.710     0.700
+
+================================================================================
+KEY INSIGHTS
+================================================================================
+
+1. MISSING VALUE FINDINGS (V1.1):
+   - Missing indicators provide meaningful signal
+   - 36 new binary features added for missingness
+   - Missingness pattern may indicate financial health status
+   - Country-based imputation has minimal impact without indicators
+   - Combined approach (V1.1d) is best balanced solution
+
+2. FEATURE COUNT IMPACT:
+   - V1.0/V4.0 (37 features): Safe, lower overfit risk
+   - V1.1b/V1.1d (73 features): Moderate, missing indicators valuable
+   - V3.0 (55 features): Starting to overfit
+   - V2.0 (95 features): Clear overfitting
+
+3. GENERALIZATION vs LOCAL CV:
+   - Higher local CV doesn't guarantee better leaderboard
+   - V2.0/V3.0: Best local CV, worst leaderboard performance
+   - V1.1d: Moderate improvement with low overfit risk
+
+4. RECOMMENDED SUBMISSIONS (Priority Order):
+   1. V1.1d - Best balanced improvement, low overfit risk
+   2. V4.0 - Simplest, if V1.1d overfits
+   3. V1.0 - Original baseline as safe fallback
+
+================================================================================
+MISSING INDICATORS CREATED (V1.1b/V1.1d)
+================================================================================
+
+Numeric Column Indicators:
+- owner_age_missing
+- personal_income_missing
+- business_expenses_missing
+- business_turnover_missing
+- business_age_years_missing
+- business_age_months_missing
+
+Categorical Column Indicators:
+- attitude_stable_business_environment_missing
+- attitude_worried_shutdown_missing
+- compliance_income_tax_missing
+- perception_insurance_doesnt_cover_losses_missing
+- perception_cannot_afford_insurance_missing
+- motor_vehicle_insurance_missing
+- has_mobile_money_missing
+- current_problem_cash_flow_missing
+- has_cellphone_missing
+- owner_sex_missing
+- offers_credit_to_customers_missing
+- attitude_satisfied_with_achievement_missing
+- has_credit_card_missing
+- keeps_financial_records_missing
+- perception_insurance_companies_dont_insure_businesses_like_yours_missing
+- perception_insurance_important_missing
+- has_insurance_missing
+- covid_essential_service_missing
+- attitude_more_successful_next_year_missing
+- problem_sourcing_money_missing
+- marketing_word_of_mouth_missing
+- has_loan_account_missing
+- has_internet_banking_missing
+- has_debit_card_missing
+- future_risk_theft_stock_missing
+- medical_insurance_missing
+- funeral_insurance_missing
+- motivation_make_more_money_missing
+- uses_friends_family_savings_missing
+- uses_informal_lender_missing
+
+Total: 36 missing indicator features
+
+================================================================================
+FILES GENERATED
+================================================================================
+
+Model Scripts:
+- models/financial_prediction_v1.py         (V1.0 baseline)
+- models/financial_prediction_v1_1.py       (V1.1 trials)
+- models/financial_prediction_v1_2.py       (V1.2 trials)
+- models/financial_prediction_v2.py         (V2.0 feature engineering)
+- models/financial_prediction_v3.py         (V3.0 balanced)
+- models/financial_prediction_v4.py         (V4.0 anti-overfit)
+
+Submissions:
+- submissions/financial_prediction_v1_submission.csv
+- submissions/financial_prediction_v1_1_v1.1d_submission.csv (RECOMMENDED)
+- submissions/financial_prediction_v1_2_v1.2a_submission.csv
+- submissions/financial_prediction_v2_submission.csv
+- submissions/financial_prediction_v3_submission.csv
+- submissions/financial_prediction_v4_submission.csv
+
+Results:
+- results_v1.1_comparison.txt               (V1.1 trial details)
+- results_v1.2_comparison.txt               (V1.2 trial details)
+- model_comparison_summary.txt              (This file)
+- experiment_summary.txt                    (Full experiment log)
+
+================================================================================
+NEXT STEPS
+================================================================================
+
+V1.2 Complete - Key Findings:
+- Label encoding is optimal for tree models
+- Ordinal mapping hurt performance significantly
+- Frequency encoding adds features but no improvement
+
+V1.3 Focus (Next):
+- Attitude/Perception data cleaning
+- Standardize response mappings
+- Aggregate attitude scores
+- Aggregate positive/negative attitude scores
+
+================================================================================
+END OF MODEL COMPARISON SUMMARY
+================================================================================

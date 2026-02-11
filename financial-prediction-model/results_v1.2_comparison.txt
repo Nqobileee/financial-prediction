@@ -1,0 +1,159 @@
+================================================================================
+FINANCIAL HEALTH PREDICTION - V1.2 TRIAL RESULTS COMPARISON
+================================================================================
+Date: 2026-02-10 20:13:51
+Focus: Categorical Encoding Strategies
+Built on: V1.1d (country-based imputation + missing indicators)
+
+================================================================================
+TRIALS OVERVIEW
+================================================================================
+
+V1.2a: Label Encoding (Baseline)
+       - Standard label encoding for all categorical columns
+       - Same as V1.1d encoding approach
+       - Features: 73
+
+V1.2b: Ordinal Mapping for Binary/Ordinal Columns
+       - Semantic ordinal encoding (Yes/No -> 1/0, etc.)
+       - Preserves ordering in columns like 'Have now' > 'Used to have' > 'Never had'
+       - Label encoding for remaining columns
+       - Features: 73
+
+V1.2c: Label Encoding + Frequency Encoding
+       - Adds frequency-based features for each categorical column
+       - Captures how common each category value is
+       - Features: 104
+
+V1.2d: Ordinal + Frequency (Combined)
+       - Combines ordinal mapping with frequency encoding
+       - Most comprehensive encoding approach
+       - Features: 104
+
+================================================================================
+TRIAL RESULTS COMPARISON
+================================================================================
+
++--------+----------+----------+----------+----------+------------+-------------+
+| Trial  | Features | Accuracy | F1 Macro | Log Loss | Acc Std    | Method      |
++--------+----------+----------+----------+----------+------------+-------------+
+| V1.2a  |       73 | 0.8770   | 0.8040   | 0.3127   | 0.0074     | Label encodi |
+| V1.2b  |       73 | 0.7145   | 0.6046   | 0.5851   | 0.0102     | Ordinal mapp |
+| V1.2c  |      104 | 0.8765   | 0.8035   | 0.3124   | 0.0063     | Label encodi |
+| V1.2d  |      104 | 0.8759   | 0.8036   | 0.3132   | 0.0065     | Ordinal mapp |
++--------+----------+----------+----------+----------+------------+-------------+
+
+Best by F1 Macro:  V1.2a (0.8040)
+Best by Log Loss:  V1.2c (0.3124)
+
+V1.1d Reference:   Acc=0.8770 | F1=0.8040 | LogLoss=0.3127
+
+================================================================================
+DETAILED RESULTS BY TRIAL
+================================================================================
+
+--------------------------------------------------------------------------------
+V1.2a: Label encoding for all categoricals (V1.1d baseline)
+--------------------------------------------------------------------------------
+Features: 73
+Accuracy: 0.8770 (+/- 0.0074)
+F1 Macro: 0.8040 (+/- 0.0094) [+0.0000 vs V1.1d]
+Log Loss: 0.3127 (+/- 0.0215) [-0.0000 vs V1.1d]
+
+Class Performance:
+                Precision   Recall   F1-Score
+    Low         0.8809      0.9783    0.9270
+    Medium      0.8708      0.6980    0.7749
+    High        0.8401      0.6149    0.7101
+
+--------------------------------------------------------------------------------
+V1.2b: Ordinal mapping for binary/ordinal columns
+--------------------------------------------------------------------------------
+Features: 73
+Accuracy: 0.7145 (+/- 0.0102)
+F1 Macro: 0.6046 (+/- 0.0063) [-0.1994 vs V1.1d]
+Log Loss: 0.5851 (+/- 0.0128) [+0.2724 vs V1.1d]
+
+Class Performance:
+                Precision   Recall   F1-Score
+    Low         0.7514      0.9059    0.8215
+    Medium      0.5571      0.3302    0.4146
+    High        0.6801      0.5021    0.5777
+
+--------------------------------------------------------------------------------
+V1.2c: Label encoding + frequency encoding features
+--------------------------------------------------------------------------------
+Features: 104
+Accuracy: 0.8765 (+/- 0.0063)
+F1 Macro: 0.8035 (+/- 0.0066) [-0.0005 vs V1.1d]
+Log Loss: 0.3124 (+/- 0.0234) [-0.0003 vs V1.1d]
+
+Class Performance:
+                Precision   Recall   F1-Score
+    Low         0.8790      0.9795    0.9265
+    Medium      0.8729      0.6946    0.7736
+    High        0.8491      0.6106    0.7104
+
+--------------------------------------------------------------------------------
+V1.2d: Ordinal mapping + frequency encoding (combined)
+--------------------------------------------------------------------------------
+Features: 104
+Accuracy: 0.8759 (+/- 0.0065)
+F1 Macro: 0.8036 (+/- 0.0100) [-0.0004 vs V1.1d]
+Log Loss: 0.3132 (+/- 0.0226) [+0.0005 vs V1.1d]
+
+Class Performance:
+                Precision   Recall   F1-Score
+    Low         0.8792      0.9779    0.9259
+    Medium      0.8697      0.6956    0.7730
+    High        0.8496      0.6128    0.7120
+
+================================================================================
+ENCODING MAPPINGS USED
+================================================================================
+
+Has Pattern Columns (Have now=2, Used to have=1, Never had=0):
+has_mobile_money, has_credit_card, has_debit_card, has_loan_account, has_internet_banking, has_insurance
+
+Yes/No Columns (Yes=1, No=0):
+has_cellphone, keeps_financial_records, offers_credit_to_customers, covid_essential_service, current_problem_cash_flow... (15 total)
+
+Attitude Columns (Yes=1, No=0, Don't know=-1):
+attitude_stable_business_environment, attitude_worried_shutdown, attitude_satisfied_with_achievement, attitude_more_successful_next_year
+
+Perception Columns (Yes=1, No=0, Don't know=-1):
+perception_insurance_important, perception_cannot_afford_insurance, perception_insurance_doesnt_cover_losses, perception_insurance_companies_dont_insure_businesses_like_yours
+
+Gender Column (Male=1, Female=0):
+owner_sex
+
+================================================================================
+COMPARISON WITH PREVIOUS VERSIONS
+================================================================================
+
+Version      Accuracy   F1 Macro   Log Loss   Features   Notes
+-------      --------   --------   --------   --------   -----
+V1.0         0.8763     0.8011     0.3174     37         Original baseline
+V1.1d        0.8770     0.8040     0.3127     73         Country impute + missing ind.
+V1.2a        0.8770     0.8040     0.3127     73         Best V1.2 trial
+
+================================================================================
+RECOMMENDATIONS
+================================================================================
+
+1. If V1.2a improves over V1.1d: Use this encoding strategy
+2. Frequency encoding adds 31 features - monitor for overfitting
+3. Ordinal encoding preserves semantic meaning but may not improve tree models
+
+Next Steps (from Strategic Plan):
+- V1.3: Attitude/Perception data cleaning and aggregation
+
+================================================================================
+FILES GENERATED
+================================================================================
+
+Model Script: models/financial_prediction_v1_2.py
+Best Submission: submissions/financial_prediction_v1_2_v1.2a_submission.csv
+Results File: C:\Users\nqobi\Documents\GitHub\financial-prediction\financial-prediction-model\results_v1.2_comparison.txt
+
+================================================================================
