@@ -6,16 +6,75 @@
 
 ## Overview
 
-This repository combines two parts:
+| Area | Purpose | README |
+|------|---------|--------|
+| [`financial-prediction-model/`](financial-prediction-model/README.md) | EDA, LightGBM training, submissions | ML workspace |
+| [`src/`](src/README.md) | Next.js survey UI and demo API | Web app |
+| [`CITATIONS.md`](CITATIONS.md) | Data attribution and licensing | — |
 
-| Area | Purpose |
-|------|---------|
-| **`financial-prediction-model/`** | Training pipeline, EDA, competition submissions |
-| **Root (`src/`)** | Next.js web app with survey UI and a demo prediction API |
+**Production classifier:** LightGBM v3 (Python). **Web app:** rule-based demo scorer unless an external ML API is connected.
 
-The **production classifier** is **LightGBM v3** (Python). The **web app** uses a separate rule-based scorer for demos when the ML API is not wired in.
+**Dataset:** 9,618 labeled training rows, 39 features, imbalanced target (~65% Low, ~30% Medium, ~5% High).
 
-**Dataset:** 9,618 labeled training rows, 39 features, imbalanced target (~65% Low, ~30% Medium, ~5% High). See [`CITATIONS.md`](CITATIONS.md) for data attribution and licensing.
+---
+
+## Research findings (summary)
+
+Analysis in [`financial-prediction-model/eda/`](financial-prediction-model/eda/README.md) highlights the following.
+
+### Data and target
+
+- **Class imbalance** is severe (~13:1 between the largest and smallest class). Stratified K-fold is used for validation.
+- **Geography matters:** Malawi skews Low; Eswatini shows relatively more High outcomes than other countries.
+- **Missingness** is structured (often by product/country), not random — missing-count features help the model.
+
+### Strongest signals
+
+| Signal | Evidence |
+|--------|----------|
+| `funeral_insurance` | Highest Cramér's V (~0.55) and top mutual information |
+| Insurance adoption (count) | Clear tiering toward Medium/High as current products increase |
+| Financial services (mobile money, cards, loans, etc.) | More active services associate with better health |
+| Formalization | Record-keeping and tax compliance support Medium/High |
+| Country | Encoded market effects and interactions with insurance |
+
+### Model performance (LightGBM, 5-fold OOF)
+
+| Metric | Value |
+|--------|-------|
+| Accuracy | 0.874 |
+| F1 (macro) | 0.805 |
+| Macro ROC-AUC (one-vs-rest) | 0.944 |
+
+Full parameter table: [`decision_parameters_summary.csv`](financial-prediction-model/eda/decision_parameters_summary.csv).
+
+---
+
+### Selected figures
+
+**Target distribution** — majority Low; High is rare (~5%).
+
+![Target distribution](financial-prediction-model/eda/figures/02_target_distribution_counts_and_percent.png)
+
+**Country vs target** — regional mix differs materially.
+
+![Target by country](financial-prediction-model/eda/figures/03_target_distribution_by_country_stacked.png)
+
+**Top categorical predictors** — funeral and insurance-related fields dominate.
+
+![Cramér's V with target](financial-prediction-model/eda/figures/08_top_categorical_cramers_v_with_target.png)
+
+**Insurance adoption tiers** — more current insurance products align with better health bands.
+
+![Insurance adoption](financial-prediction-model/eda/figures/11_insurance_adoption_tier_vs_target.png)
+
+**OOF evaluation** — multiclass separation is strong on cross-validation.
+
+![Confusion matrix](financial-prediction-model/eda/figures/17_confusion_matrix_lightgbm_oof.png)
+
+![ROC curves](financial-prediction-model/eda/figures/18_roc_curves_ovr_lightgbm_oof.png)
+
+All 19 charts: [`financial-prediction-model/eda/figures/`](financial-prediction-model/eda/figures/README.md).
 
 ---
 
@@ -25,62 +84,28 @@ The **production classifier** is **LightGBM v3** (Python). The **web app** uses 
 
 | Version | Algorithm | Role |
 |---------|-----------|------|
-| **v3 (current)** | LightGBM multiclass | Main model — stratified 5-fold CV, data-driven feature engineering |
-| v2 | Earlier iteration | Archived submission in `submissions/` |
-| v1 / v1.1 / v1.2 | Earlier iterations | Archived submissions in `submissions/` |
+| **v3 (current)** | LightGBM multiclass | Main model — stratified 5-fold CV, data-driven features |
+| v2, v1.x | Earlier runs | Archived in [`submissions/`](financial-prediction-model/submissions/README.md) |
 
-**v3 highlights**
+| Artifact | Path |
+|----------|------|
+| Training notebook | [`models/financial_prediction_v3.ipynb`](financial-prediction-model/models/financial_prediction_v3.ipynb) |
+| Training script | [`models/financial_prediction_v3.py`](financial-prediction-model/models/financial_prediction_v3.py) |
+| Saved model | `financial-prediction-model/models/financial_prediction_v3_model.pkl` |
+| Submission | `financial-prediction-model/submissions/financial_prediction_v3_submission.csv` |
 
-- **Target:** Financial Health Index → `Low` / `Medium` / `High`
-- **Features:** Raw survey fields plus engineered signals (insurance tiers, funeral insurance encoding, financial-service adoption, country effects, formalization, missingness patterns, attitudes, numeric ratios)
-- **Validation:** Stratified K-fold (5), early stopping per fold
-- **Artifacts:** `models/financial_prediction_v3_model.pkl`, `submissions/financial_prediction_v3_submission.csv`
-
-**Reported EDA / CV benchmarks** (from latest EDA run; see `eda/decision_parameters_summary.csv`):
-
-| Metric | Value |
-|--------|-------|
-| OOF accuracy (LightGBM) | 0.874 |
-| OOF F1 (macro) | 0.805 |
-| Macro ROC-AUC (one-vs-rest) | 0.944 |
-| Strongest categorical signal | `funeral_insurance` (Cramér's V ≈ 0.55) |
-
----
-
-### Exploratory data analysis (EDA)
-
-| Item | Location |
-|------|----------|
-| Notebook | [`financial-prediction-model/eda/comprehensive_eda.ipynb`](financial-prediction-model/eda/comprehensive_eda.ipynb) |
-| Figures (19 charts) | [`financial-prediction-model/eda/figures/`](financial-prediction-model/eda/figures/) |
-| Findings summary | [`financial-prediction-model/eda/decision_parameters_summary.csv`](financial-prediction-model/eda/decision_parameters_summary.csv) |
-
-The EDA notebook covers missingness, target balance, numeric and categorical associations (chi-square, Cramér's V, mutual information), insurance and financial-service tiers, engineered-feature analysis, Random Forest and LightGBM importance, confusion matrix, and ROC curves.
-
-**Rerun behavior:** Skips plotting when a figure PNG already exists; displays cached images inline and in the figure gallery. Delete a PNG (or `decision_parameters_summary.csv`) to regenerate it.
-
----
-
-### Model training notebook
-
-| Item | Location |
-|------|----------|
-| Notebook | [`financial-prediction-model/models/financial_prediction_v3.ipynb`](financial-prediction-model/models/financial_prediction_v3.ipynb) |
-| Script (same logic) | [`financial-prediction-model/models/financial_prediction_v3.py`](financial-prediction-model/models/financial_prediction_v3.py) |
-
-Run the notebook or script from `financial-prediction-model/` so paths resolve to `datasets/`, `models/`, and `submissions/`.
-
----
-
-### ML project layout
+### Project layout
 
 ```
-financial-prediction-model/
-├── datasets/          Train.csv, Test.csv, VariableDefinitions.csv
-├── eda/               comprehensive_eda.ipynb, figures/, decision_parameters_summary.csv
-├── models/            v3 notebook, script, saved .pkl
-├── submissions/       v1–v3 competition CSVs
-└── scripts/           Notebook generators (optional maintenance)
+financial-prediction/
+├── financial-prediction-model/
+│   ├── datasets/       README + Train/Test CSVs
+│   ├── eda/            README + notebook + figures/
+│   ├── models/         README + v3 train + .pkl
+│   ├── submissions/    README + competition CSVs
+│   └── scripts/        README + notebook generators
+├── src/                README + Next.js app
+└── CITATIONS.md
 ```
 
 **Python stack:** pandas, NumPy, scikit-learn, LightGBM, matplotlib, seaborn, Jupyter.
@@ -91,11 +116,10 @@ financial-prediction-model/
 
 | Item | Detail |
 |------|--------|
-| Framework | Next.js (App Router), React, TypeScript |
-| Styling | Tailwind CSS |
-| API | `/api/health`, `/api/predict` (demo heuristic scorer) |
+| Framework | Next.js, React, TypeScript, Tailwind CSS |
+| API | `/api/health`, `/api/predict` |
 
-The UI supports survey-style input and results views. Connect `NEXT_PUBLIC_API_URL` via a local `.env` file if you add an external ML backend (env files are gitignored; use `.env.example` as a template if you add one).
+See [`src/README.md`](src/README.md).
 
 ---
 
@@ -112,33 +136,27 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
-### ML notebooks
+### ML
 
 ```bash
 cd financial-prediction-model
 pip install pandas numpy scikit-learn lightgbm matplotlib seaborn jupyter joblib scipy
 
-# EDA (generates figures/ and decision_parameters_summary.csv)
-python -m jupyter notebook eda/comprehensive_eda.ipynb
-
-# Train v3 and write model + submission
+jupyter notebook eda/comprehensive_eda.ipynb
 python models/financial_prediction_v3.py
-# or open models/financial_prediction_v3.ipynb
 ```
 
 ---
 
 ## Environment and secrets
 
-All `.env` files are ignored by git (see [`.gitignore`](.gitignore)). Do not commit API keys or production URLs. Copy variables from your team template into `.env.local` for local development.
+`.env` files are gitignored. Use `.env.local` for local development; do not commit secrets.
 
 ---
 
 ## License and citation
 
-Project code is open source under the **MIT License** unless noted otherwise. Training data usage follows **Zindi** competition terms and **CC BY-SA 4.0** — see [`CITATIONS.md`](CITATIONS.md).
-
-**Suggested citation**
+Code: **MIT License** where applicable. Data: **Zindi** terms and **CC BY-SA 4.0** — see [`CITATIONS.md`](CITATIONS.md).
 
 ```
 FinHealth: SME Financial Health Prediction Platform (2026).
