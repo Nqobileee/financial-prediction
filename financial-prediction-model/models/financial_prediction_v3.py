@@ -588,20 +588,19 @@ lgb_params = {
     'metric': 'multi_logloss',
     'boosting_type': 'gbdt',
     'n_estimators': 1500,
-    'learning_rate': 0.02,
-    'num_leaves': 48,
-    'max_depth': 7,
+    'learning_rate': 0.025,
+    'num_leaves': 55,
+    'max_depth': 8,
     'min_child_samples': 25,
-    'subsample': 0.75,
+    'subsample': 0.8,
     'subsample_freq': 1,
-    'colsample_bytree': 0.65,
-    'reg_alpha': 0.2,
-    'reg_lambda': 0.2,
+    'colsample_bytree': 0.7,
+    'reg_alpha': 0.15,
+    'reg_lambda': 0.15,
     'min_split_gain': 0.005,
     'random_state': RANDOM_STATE,
     'verbose': -1,
-    'n_jobs': -1,
-    'class_weight': 'balanced'  # Handle class imbalance
+    'n_jobs': -1
 }
 
 skf = StratifiedKFold(n_splits=N_FOLDS, shuffle=True, random_state=RANDOM_STATE)
@@ -741,7 +740,7 @@ print("\n" + "=" * 80)
 print("V3.0 DATA-DRIVEN MODEL COMPLETE")
 print("=" * 80)
 print(f"""
-Model: LightGBM (multi-class) with class balancing
+Model: LightGBM (multi-class) with optimized parameters
 Original Features: {len(raw_feature_cols)}
 Engineered Features: {len(engineered_feature_names)}
 Total Features: {len(feature_cols)}
