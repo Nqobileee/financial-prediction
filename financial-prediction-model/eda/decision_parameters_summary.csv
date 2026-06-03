@@ -1,0 +1,9 @@
+parameter,value,metric
+Strongest categorical signal,funeral_insurance,Cramér's V = 0.546
+Top MI feature,funeral_insurance,MI = 0.2232
+Class imbalance ratio,13.36,max class / min class count
+OOF Accuracy (LGBM),0.8743,5-fold stratified CV
+OOF F1 macro,0.8049,primary ranking metric candidate
+Macro ROC-AUC (OVR),0.9437,one-vs-rest on OOF probabilities
+Recommended stratification,StratifiedKFold on Target,handles 65/30/5% class mix
+Key engineered blocks,"insurance tiers, financial services, funeral insurance, country, formalization",see model v3 notebook
